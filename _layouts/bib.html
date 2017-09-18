@@ -64,19 +64,22 @@
     [<a href="{{ entry.html }}" target="_blank">HTML</a>]
   {% endif %}
   {% if entry.pdf %}
-    [<a href="{{ entry.pdf | prepend: '/assets/pdf/' | prepend: site.baseurl | prepend: site.url }}" target="_blank">PDF</a>]
+    [<a href="{{ entry.pdf }}" target="_blank">PDF</a>]
   {% endif %}
   {% if entry.supp %}
-    [<a href="{{ entry.supp | prepend: '/assets/pdf/' | prepend: site.baseurl | prepend: site.url }}" target="_blank">Supp</a>]
-  {% endif %}
-  {% if entry.poster %}
-    [<a href="{{ entry.poster | prepend: '/assets/pdf/' | prepend: site.baseurl | prepend: site.url }}" target="_blank">Poster</a>]
-  {% endif %}
-  {% if entry.slides %}
-    [<a href="{{ entry.slides | prepend: '/assets/pdf/' | prepend: site.baseurl | prepend: site.url }}" target="_blank">Slides</a>]
+    [<a href="{{ entry.supp | prepend: '/assets/pdf/' | prepend: site.baseurl | prepend: site.url }}" target="_blank">PDF</a>]
   {% endif %}
   {% if entry.code %}
     [<a href="{{ entry.code }}" target="_blank">Code</a>]
+  {% endif %}
+  {% if entry.website %}
+    [<a href="{{ entry.website }}" target="_blank">Website</a>]
+  {% endif %}
+  {% if entry.poster %}
+    [<a href="{{ entry.poster }}" target="_blank">Poster</a>]
+  {% endif %}
+  {% if entry.slides %}
+    [<a href="{{ entry.slides | prepend: '/assets/pdf/' | prepend: site.baseurl | prepend: site.url }}" target="_blank">Slides</a>]
   {% endif %}
   </span>
 
