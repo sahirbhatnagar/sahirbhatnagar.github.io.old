@@ -2,9 +2,39 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Materials for courses you taught. Replace this text with your description.
+description: Materials for full term courses, short courses and tutorials that I've taught or created.
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
+## Graduate Courses
+<hr>
 
-Organize your courses by years, topics, or universities, however you like!
+
+{% bibliography -f papers -q @*[status=course]* %}
+
+
+
+
+## Short Courses
+<hr>
+
+{% bibliography -f papers -q @*[status=short]* %}
+
+
+
+
+
+## Tutorials
+<hr>
+
+{% bibliography -f papers -q @*[status=tutorials]* %}
+
+
+
+## Teaching Assistant
+<hr>
+
+
+{% bibliography -f papers -q @*[status=TA]* %}
+
+
+

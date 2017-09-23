@@ -39,6 +39,12 @@
         {% endfor %}
 
         {% for page in site.pages %}
+          {% if page.title and page.url != "/" and page.title == "teaching" %}
+            <a class="page-link" href="{{ page.url | prepend: site.baseurl | prepend: site.url }}">{{ page.title }}</a>
+          {% endif %}
+        {% endfor %}
+
+        {% for page in site.pages %}
           {% if page.title and page.url != "/" and page.title == "resources" %}
             <a class="page-link" href="{{ page.url | prepend: site.baseurl | prepend: site.url }}">{{ page.title }}</a>
           {% endif %}
