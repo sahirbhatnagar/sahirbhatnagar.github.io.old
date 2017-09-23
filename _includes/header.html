@@ -17,9 +17,7 @@
 
         <!-- Blog 
         <a class="page-link" href="{{ '/blog/' | prepend: site.baseurl | prepend: site.url }}">blog</a>-->
-
-        <!-- Blog -->
-        <a class="page-link" href="http://sahirbhatnagar.github.io/blog">blog</a>
+    
 
         <!-- Pages 
         {% for page in site.pages %}
@@ -29,10 +27,25 @@
         {% endfor %} -->
 
         {% for page in site.pages %}
-          {% if page.title and page.url != "/" and page.title == "publications"%}
+          {% if page.title and page.url != "/" and page.title == "publications" %}
             <a class="page-link" href="{{ page.url | prepend: site.baseurl | prepend: site.url }}">{{ page.title }}</a>
           {% endif %}
         {% endfor %}
+
+        {% for page in site.pages %}
+          {% if page.title and page.url != "/" and page.title == "code" %}
+            <a class="page-link" href="{{ page.url | prepend: site.baseurl | prepend: site.url }}">{{ page.title }}</a>
+          {% endif %}
+        {% endfor %}
+
+        {% for page in site.pages %}
+          {% if page.title and page.url != "/" and page.title == "resources" %}
+            <a class="page-link" href="{{ page.url | prepend: site.baseurl | prepend: site.url }}">{{ page.title }}</a>
+          {% endif %}
+        {% endfor %}
+
+        <!-- Blog -->
+        <a class="page-link" href="http://sahirbhatnagar.github.io/blog">blog</a>
 
         <!-- CV link -->
         <a class="page-link" href="{{ '/assets/pdf/BhatnagarCV2017.pdf' | prepend: site.baseurl | prepend: site.url }}">CV</a>
