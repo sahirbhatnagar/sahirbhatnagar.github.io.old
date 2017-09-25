@@ -1,12 +1,7 @@
 ---
-title: "Polygenic Risks Scores with data.table in R"
-author: "Sahir"
-date: "August 11, 2017"
-output: html_document
 layout: post
-tags: [R, data.table, genomics]
-permalink: polygenic-risk-scores
-comments: yes
+title: Polygenic Risks Scores with data.table in R
+date: 2017-08-11 15:09:00
 ---
 
 
