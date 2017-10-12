@@ -1,11 +1,10 @@
 ---
 layout: page
-permalink: /resources/
-title: resources
-description: 
+permalink: /misc/
+title: miscellaneous
 ---
 
-> Below is my ever increasing collection of useful web resources (in no particular order) as well as my academic mentors. I am grateful for their efforts. Their teachings, discussions, projects, articles, blog posts, tweets, GitHub repos, `R` packages and software have a tremendous impact on my academic endeavors. 
+Below is my ever increasing collection of useful web resources (in no particular order) as well as my academic mentors. I am grateful for their efforts. Their teachings, discussions, projects, articles, blog posts, tweets, GitHub repos, `R` packages and software have a tremendous impact on my academic endeavors. 
 
 ***
 
@@ -114,8 +113,8 @@ description:
 
 
 
-
-<!--<p class="message">
+<!--
+<p class="message">
   Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
 </p>
 
