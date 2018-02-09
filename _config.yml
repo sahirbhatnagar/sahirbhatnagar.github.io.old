@@ -90,6 +90,7 @@ scholar:
   sort_by: year
   order: descending
   group_by: none
+  bibliography_item_tag: li
 
   source: /_bibliography/
   bibliography: papers.bib
