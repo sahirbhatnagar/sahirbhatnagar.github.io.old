@@ -18,7 +18,7 @@ title: talks
 
 ### 2018
 
-* **McGill EBOH Research Day** _Student Keynote Presentation_
+* **McGill EBOH Research Day** _Student Keynote Presentation_  
 [Pick your favorite buzzword: Data Science, Big Data, Machine Learning, Data Science , Big Data, Machine Learning](https://docs.google.com/presentation/d/1cP0dSMNqfTwe5wdppkPkkhLbUcnyIJf5_wgIP71mpEo/edit?usp=sharing)
 
 
