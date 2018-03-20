@@ -22,6 +22,11 @@ title: talks
 [Pick your favorite buzzword: Data Science, Big Data, Machine Learning, Data Science , Big Data, Machine Learning](https://docs.google.com/presentation/d/1cP0dSMNqfTwe5wdppkPkkhLbUcnyIJf5_wgIP71mpEo/edit?usp=sharing)
 
 
+* **McGill University** _Special Seminar Series_     
+[Betting on Sparsity](/assets/pdf/McGill_talk.pdf)
+
+
+
 <br>
 
 ### 2017
