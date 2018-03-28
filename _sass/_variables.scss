@@ -42,6 +42,7 @@ $orange:            #F29105 !default;
 $orange-1:          #ffcc22 !default;
 $blue:              #2698BA !default;
 $blue-1:            #0076df !default;
+$alertblue:			#0072b2 !default;
 $dark-blue:         #00369f !default;
 $green:             #00ab37 !default;
 $green-1:           #11D68B !default;
@@ -69,7 +70,7 @@ $darken-2:          rgba(#000,.125) !default;
 $darken-3:          rgba(#000,.25) !default;
 $darken-4:          rgba(#000,.5) !default;
 
-$theme-color:       $purple;
+$theme-color:       $alertblue;
 $code-color:        $dark-gray;
 $text-color:        $mid-gray;
 $background-color:  white;

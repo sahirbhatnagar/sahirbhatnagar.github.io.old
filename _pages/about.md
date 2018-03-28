@@ -7,7 +7,7 @@ description: <a href="">PhD Candidate, Biostatistics, McGill University</a>.
 profile:
   align: right
   image: mehydepark_crop.png
-news: false
+news: true
 social: true
 ---
 

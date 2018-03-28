@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+date: 2018-02-19 15:59:00-0400
 inline: true
 ---
 
-A simple inline announcement.
+My tutorial on regression trees in [english](/assets/pdf/cart_animation_EN_Feb19_Final.pdf) and in [french](/assets/pdf/cart_animation.pdf)
