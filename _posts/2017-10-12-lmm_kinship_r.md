@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Mixed Models with Kinship in R
-date: 2017-08-11 15:09:00
+date: 2017-10-12 15:09:00
 ---
 
 
