@@ -5,6 +5,12 @@ title: code
 description: A list of R packages published on CRAN
 ---
 
+
+* [sail](http://sahirbhatnagar.com/sail/)  
+[![Travis build status](https://travis-ci.org/sahirbhatnagar/sail.svg?branch=master)](https://travis-ci.org/sahirbhatnagar/sail)   [![Coverage status](https://codecov.io/gh/sahirbhatnagar/sail/branch/master/graph/badge.svg)](https://codecov.io/github/sahirbhatnagar/sail?branch=master)   [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/sail)](https://cran.r-project.org/package=sail)  
+Sparse additive interaction learning. This software package implements the `sail` method described in the accompanying paper. This is a penalized regression method that selects and estimates both linear and non-linear interactions with a single exposure variable.  
+
+
 * [eclust](http://sahirbhatnagar.com/eclust/)  
 [![Travis-CI Build Status](https://travis-ci.org/sahirbhatnagar/eclust.svg?branch=master)](https://travis-ci.org/sahirbhatnagar/eclust) [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/eclust)](https://cran.r-project.org/package=eclust) ![](http://cranlogs.r-pkg.org/badges/grand-total/eclust?color=blue)  
 A Statistical Software Tool for the Analysis of High-Dimensional Interactions. This software is written in the open source software environment R. It's main functionality is to cluster a high dimensional dataset (e.g. genomics, brain imaging) by leveraging the environmental exposures. See the <a href="https://doi.org/10.1101/102475">Preprint</a> for details.

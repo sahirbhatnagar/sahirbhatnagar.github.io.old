@@ -5,11 +5,11 @@ date: 2018-04-03 15:09:00
 ---
 
 
-As part of my interview process, I was required to give a [mini-course](/assets/pdf/cart_animation.pdf) on regression trees to four faculty members. As I talked about the red region in the following figure:
+I recently gave a [mini-course](/assets/pdf/cart_animation.pdf) on regression trees. As I talked about the red region in the following figure:
 
 ![](/assets/img/cart.png)
 
-one of the faculty members said they had no clue what I was referring to. It turns out he was color blind and could not identify the red region. Yikes!  
+one of the audience members said they had no clue what I was referring to. It turns out they were color blind and could not identify the red region. Yikes!  
 
 Here is a colorblind friendly pallette courtesy of [Cookbook for R](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette)
 
