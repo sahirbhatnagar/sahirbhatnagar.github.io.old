@@ -22,6 +22,9 @@ scholar_authorid: Sahir Bhatnagar # put your google scholar author id
 #contact_note: >
 #  You can even add a little note about which of these is the best way to reach you.
 
+google_analytics: UA-60189402-1 # out your google-analytics code
+
+
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
