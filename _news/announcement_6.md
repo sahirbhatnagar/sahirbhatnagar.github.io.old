@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2018-05-09 07:59:00-0400
+date: 2018-05-28 07:59:00-0400
 inline: true
 ---
 
-New [paper published in Rheumatology](https://academic.oup.com/rheumatology/advance-article/doi/10.1093/rheumatology/key101/4993770)
+New [preprint](/assets/pdf/sail_manuscript_v2.pdf) on sparse additive interaction learning and accompanying R package [sail](http://sahirbhatnagar.com/sail/)  
