@@ -8,7 +8,7 @@ description: > # this means to ignore newlines until "url:"
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>, <a href="https://github.com/alshedivat/al-folio">al-folio</a>, <a href="http://daringfireball.net/projects/markdown/">markdown</a>, <a href="https://cran.r-project.org/">R</a>, <a href="http://yihui.name/knitr/">knitr</a>, <a href="http://johnmacfarlane.net/pandoc/">pandoc</a>, <a href="https://github.com/mozilla/Fira">Fira</a> and <a href="https://github.com/sahirbhatnagar/sahirbhatnagar.github.io">GitHub</a>
 
-url:              http://sahirbhatnagar.com
+url:              https://sahirbhatnagar.com
 baseurl:          ''
 last_updated: # leave blank if you don't want to display last updated
 
