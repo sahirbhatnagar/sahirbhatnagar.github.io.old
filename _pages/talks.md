@@ -18,6 +18,9 @@ title: talks
 
 ### 2018
 
+* **JSM 2018, Vancouver** _Joint Statistical Meeting (Contributed)_    
+[A General Framework for Variable Selection in Linear Mixed Models with Applications to Genetic Studies with Structured Populations](/assets/pdf/Bhatnagar_JSM_2018.pdf)    
+
 * **14th Annual McGill EBOH Research Day** _Student Keynote Presentation_  
 [Pick your favorite buzzword: Data Science, Big Data, Machine Learning, Data Science , Big Data, Machine Learning](https://docs.google.com/presentation/d/1cP0dSMNqfTwe5wdppkPkkhLbUcnyIJf5_wgIP71mpEo/edit?usp=sharing)
 

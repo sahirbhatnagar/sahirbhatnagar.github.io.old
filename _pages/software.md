@@ -6,6 +6,10 @@ description: A list of R packages published on CRAN or on GitHub
 ---
 
 
+* [ggmix](http://sahirbhatnagar.com/ggmix/)  
+[![Travis build status](https://travis-ci.org/sahirbhatnagar/ggmix.svg?branch=master)](https://travis-ci.org/sahirbhatnagar/ggmix)   [![Coverage status](https://codecov.io/gh/sahirbhatnagar/ggmix/branch/master/graph/badge.svg)](https://codecov.io/github/sahirbhatnagar/ggmix?branch=master)   [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/ggmix)](https://cran.r-project.org/package=ggmix)  
+A General Framework for Variable Selection in Linear Mixed Models with Applications to Genetic Studies with Structured Populations. This is a penalized regression method that selects and estimates predictors in a single random effects model.
+
 * [sail](http://sahirbhatnagar.com/sail/)  
 [![Travis build status](https://travis-ci.org/sahirbhatnagar/sail.svg?branch=master)](https://travis-ci.org/sahirbhatnagar/sail)   [![Coverage status](https://codecov.io/gh/sahirbhatnagar/sail/branch/master/graph/badge.svg)](https://codecov.io/github/sahirbhatnagar/sail?branch=master)   [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/sail)](https://cran.r-project.org/package=sail)  
 Sparse additive interaction learning. This software package implements the `sail` method described in the accompanying paper. This is a penalized regression method that selects and estimates both linear and non-linear interactions with a single exposure variable.  
