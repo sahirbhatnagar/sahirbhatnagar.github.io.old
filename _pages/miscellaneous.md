@@ -27,7 +27,6 @@ Below is my ever increasing collection of useful web resources (in no particular
 
 ## Statistics
 
-* [Jacob Bien](http://faculty.bscb.cornell.edu/~bien/)
 * [How to bootstrap correlated data](http://biostat.mc.vanderbilt.edu/wiki/Main/HowToBootstrapCorrelatedData)
 * Principal Component Analysis: [Link 1](http://people.maths.ox.ac.uk/richardsonm/SignalProcPCA.pdf), [Link 2](http://setosa.io/ev/principal-component-analysis/), [Link 3](http://gastonsanchez.com/teaching/)
 
@@ -47,7 +46,6 @@ Below is my ever increasing collection of useful web resources (in no particular
 ## Mentors
 
 * [Celia Greenwood](http://www.mcgill.ca/statisticalgenetics/home-page)
-* [Mathieu Blanchette](http://cs.mcgill.ca/~blanchem/)
 * [Yi Yang](http://www.math.mcgill.ca/yyang/)
 * [Devon Lin](http://www.mast.queensu.ca/~cdlin/)
 * [Paul Peng](http://post.queensu.ca/~pengp/)
@@ -100,7 +98,6 @@ Below is my ever increasing collection of useful web resources (in no particular
 ## Blogs
 
 * [Statistical Thinking](http://www.fharrell.com/)
-* [Healthy Inference](https://healthyinference.com/)
 
 ***
 

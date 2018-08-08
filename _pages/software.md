@@ -31,3 +31,10 @@ Create interactive Q-Q, manhattan and volcano plots that are usable from the R c
 * [acm4r](http://cran.r-project.org/web/packages/acm4r/index.html)  
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/acm4r)](https://cran.r-project.org/package=acm4r) ![](http://cranlogs.r-pkg.org/badges/grand-total/acm4r?color=blue)  
 Fragment lengths or molecular weights from pairs of lanes are compared, and a number of matching bands are calculated using the Align-and-Count Method.
+
+### Shiny Apps
+
+* [cdiff](https://sahir.shinyapps.io/cdiff/)    
+Interactive, online web application to guide preoperative decision making for patients with fulminant Clostridium difficile colitis (FCDC) being evaluated for surgery. This calculator predicts 30-day postoperative mortality for patients with FCDC based on easily attainable pre-operative parameters.   
+
+* [Supplementary results for our paper "Assessing transmission ratio distortion in extended families: a comparison of analysis methods"](https://sahir.shinyapps.io/TRDtest/)  
