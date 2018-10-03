@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Sahir Bhatnagar</title>
+  <title>Sahir Bhatnagar | Statistical Power in t tests with Unequal Group Sizes</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
   <link rel="shortcut icon" href="https://sahirbhatnagar.com/assets/img/favicon.ico">
   <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css"> 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="https://sahirbhatnagar.com/blog/">
+  <link rel="canonical" href="https://sahirbhatnagar.com/power_ttest">
 </head>
 
 
@@ -224,92 +224,58 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>sahir's blog</h1>
-  <h2>posts about stats and R</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Statistical Power in t tests with Unequal Group Sizes</h1>
+    <p class="post-meta">February 25, 2016 • sahir</p>
+  </header>
+
+  <article class="post-content">
+    <p>When performing <a href="https://en.wikipedia.org/wiki/Student%27s_t-test">Student’s t-test</a> to compare difference in means between two group, it is a useful exercise to determine the effect of unequal sample sizes in the comparison groups on power. Large imbalances generally will not have adequate statistical power to detect even large effect sizes associated with a factor, leading to a high Type II error rate as shown in the figure below:</p>
+
+<p><img src="/figure/posts/2016-02-25-power_ttest_sample_size/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" /></p>
+
+<!--more-->
+
+<p>To jusity this reasoning I performed a power analysis for different group sizes. I considered the following group sizes:</p>
+
+<ol>
+  <li>n1 = 28, n2 = 1406: n1 represents 2% of the entire sample size of 1434</li>
+  <li>n1 = 144, n2 = 1290: n1 represents 10% of the entire sample size of 1434</li>
+  <li>n1 = 287, n2 = 1147: n1 represents 20% of the entire sample size of 1434</li>
+  <li>n1 = 430, n2 = 1004: n1 represents 30% of the entire sample size of 1434</li>
+  <li>n1 = 574, n2 = 860: n1 represents 40% of the entire sample size of 1434</li>
+  <li>n1 = 717, n2 = 717: equal size groups (this is optimal because it leads to the highest power for a given effect size)</li>
+</ol>
+
+<p>In the figure above we plotted the power curves for the $t$-test, as a function of the effect size, assuming a Type I error rate of 5%.</p>
+
+<h2 id="code">Code</h2>
+
+<p>Here is the code used to produce the above plot</p>
+
+<script src="https://gist.github.com/sahirbhatnagar/9507cc24983103ad9f14.js"></script>
+
+
+  </article>
+
+  
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname  = 'al-folio';
+      var disqus_identifier = '/power_ttest_sample_size';
+      var disqus_title      = "Statistical Power in t tests with Unequal Group Sizes";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
 </div>
-
-
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2018/travis_bookdown/">Getting Travis to Auto Push to GitHub</a></h2>
-      <p class="post-meta">August 23, 2018 — 11:09</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2018/color_blind/">I Am Color Blind</a></h2>
-      <p class="post-meta">April 3, 2018 — 11:09</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2018/package_docs/">Documenting R Packages</a></h2>
-      <p class="post-meta">April 3, 2018 — 11:09</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2017/lmm_kinship_r/">Mixed Models with Kinship in R</a></h2>
-      <p class="post-meta">October 12, 2017 — 11:09</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2017/polygenic_risk_scores/">Polygenic Risks Scores with data.table in R</a></h2>
-      <p class="post-meta">August 11, 2017 — 11:09</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/bayesian-stan">Bayesian Non-Linear Multilevel Models</a></h2>
-      <p class="post-meta">February 23, 2017 — 00:00</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/limma_ttest">Limma Moderated and Ordinary t-statistics</a></h2>
-      <p class="post-meta">February 7, 2017 — 00:00</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/power_ttest">Statistical Power in t tests with Unequal Group Sizes</a></h2>
-      <p class="post-meta">February 25, 2016 — 00:00</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2016/facet_wrap_labels/">Math Expressions with Facets in ggplot2</a></h2>
-      <p class="post-meta">February 8, 2016 — 00:00</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/heatmap">Heatmaps in R</a></h2>
-      <p class="post-meta">June 10, 2015 — 00:00</p>
-      <p></p>
-    </li>
-  
-</ul>
-
-
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
-</div>
-
-
 
       </div>
     </div>

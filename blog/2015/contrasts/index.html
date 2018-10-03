@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Sahir Bhatnagar | Contrasts in R</title>
+  <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+  <link rel="shortcut icon" href="https://sahirbhatnagar.com/assets/img/favicon.ico">
+  <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css"> 
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="https://sahirbhatnagar.com/blog/2015/contrasts/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Sahir</strong> Bhatnagar
+    </span>
+    
+
+    <nav class="site-nav">
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="https://sahirbhatnagar.com/">about</a>
+
+        <!-- Pages 
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/misc/">miscellaneous</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/papers/">papers</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/projects/">projects</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/code/">code</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/talks/">talks</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/teaching/">teaching</a>
+          
+        
+          
+        
+          
+         -->
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/papers/">papers</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/code/">code</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/teaching/">teaching</a>
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/talks/">talks</a>
+          
+        
+          
+        
+          
+        
+          
+        
+        <!-- Blog
+        <a class="page-link" href="http://sahirbhatnagar.github.io/blog">blog</a>-->
+
+        <!-- Blog--> 
+        <a class="page-link" href="https://sahirbhatnagar.com/blog/">blog</a> 
+
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/misc/">misc</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+
+
+        <!-- CV link -->
+        <a class="page-link" href="https://sahirbhatnagar.com/assets/pdf/BhatnagarCV2018.pdf">CV</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Contrasts in R</h1>
+    <p class="post-meta">March 4, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>In this post I discuss how to create custom contrasts for factor variables in <code class="highlighter-rouge">R</code>. First lets create some simulated data. Create the data, and factor Disease status:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Disease</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="s2">"RA"</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="s2">"SLE"</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="s2">"Scleroderma"</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">),</span><span class="w"> 
+             </span><span class="nf">rep</span><span class="p">(</span><span class="s2">"Myositis"</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="s2">"Control"</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">))</span><span class="w">
+</span><span class="n">set.seed</span><span class="p">(</span><span class="m">1234</span><span class="p">)</span><span class="w">
+</span><span class="n">sex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w">  </span><span class="n">rbinom</span><span class="p">(</span><span class="m">25</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w">
+</span><span class="n">age</span><span class="w"> </span><span class="o">&lt;-</span><span class="w">  </span><span class="n">rnorm</span><span class="p">(</span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">0.12</span><span class="p">)</span><span class="w">
+</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">sex</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="n">Disease</span><span class="o">=</span><span class="n">factor</span><span class="p">(</span><span class="n">Disease</span><span class="p">))</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 'data.frame':	25 obs. of  4 variables:
+##  $ y      : num  0.506 0.323 0.552 0.492 0.513 ...
+##  $ sex    : int  0 1 1 1 1 1 0 0 1 1 ...
+##  $ age    : num  44.4 46.9 31.6 36.9 40.1 ...
+##  $ Disease: Factor w/ 5 levels "Control","Myositis",..: 3 3 3 3 3 5 5 5 5 5 ...</code></pre></figure>
+
+<p>We want the following contrasts:</p>
+
+<ul>
+  <li>Control versus all 4 diseases combined</li>
+  <li>RA versus the combination of (SLE, Scleroderma, Myositis), leaving out the Controls</li>
+</ul>
+
+<!--more-->
+
+<h2 id="default-settings">Default settings</h2>
+
+<p>Let <script type="math/tex">x_1,x_2,x_3,x_4</script> be the indicators for Myositis, RA, Scleroderma and SLE, respectively. The standard linear model <code class="highlighter-rouge">R</code> will fit is given by (for simplicity I am ignoring age and sex, but it won’t make a difference when you add them in the model):</p>
+
+<script type="math/tex; mode=display">\mu_y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \beta_4 x_4</script>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">summary</span><span class="p">(</span><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Disease</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 
+## Call:
+## lm(formula = y ~ Disease, data = data)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.18718 -0.05324  0.02859  0.07511  0.12395 
+## 
+## Coefficients:
+##                    Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)         0.60943    0.04756  12.814 4.22e-11 ***
+## DiseaseMyositis    -0.24835    0.06726  -3.692  0.00144 ** 
+## DiseaseRA          -0.13225    0.06726  -1.966  0.06330 .  
+## DiseaseScleroderma -0.15540    0.06726  -2.310  0.03165 *  
+## DiseaseSLE         -0.05650    0.06726  -0.840  0.41081    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1063 on 20 degrees of freedom
+## Multiple R-squared:  0.4452,	Adjusted R-squared:  0.3342 
+## F-statistic: 4.012 on 4 and 20 DF,  p-value: 0.01507</code></pre></figure>
+
+<p>This is the default contrast matrix with unordered factor variables:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">contrasts</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Disease</span><span class="p">)</span></code></pre></figure>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: right">Myositis</th>
+      <th style="text-align: right">RA</th>
+      <th style="text-align: right">Scleroderma</th>
+      <th style="text-align: right">SLE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Control</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Myositis</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">RA</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Scleroderma</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">SLE</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This compares the mean of the response for the Controls to the mean of the response for Myositis, RA, Scleroderma, and SLE separately. The table can be read by column, and the numbers in the columns represent the weight of the regression coefficient, e.g. in the first column Myositis is being compare to Control.</p>
+
+<h2 id="custom-contrats">Custom Contrats</h2>
+
+<p>Since we want only two contrasts, we want <code class="highlighter-rouge">R</code> to fit the following model:</p>
+
+<script type="math/tex; mode=display">\mu_y = \beta_0 + \beta_1 x_1 + \beta_2 x_2</script>
+
+<p>where <script type="math/tex">\beta_1</script> represents the contrast estimate for the comparison between controls and all other diseases, and <script type="math/tex">\beta_2</script> represents the contrast estimate of RA versus the combination of SLE, Scleroderma, Myositis.</p>
+
+<p>To create custom contrasts, we must specify the contrast matrix as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: right">Control_vs_All</th>
+      <th style="text-align: right">RA_vs_Myos_Scle_SLE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Control</td>
+      <td style="text-align: right">0.8</td>
+      <td style="text-align: right">0.0000000</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Myositis</td>
+      <td style="text-align: right">-0.2</td>
+      <td style="text-align: right">-0.3333333</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">RA</td>
+      <td style="text-align: right">-0.2</td>
+      <td style="text-align: right">1.0000000</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Scleroderma</td>
+      <td style="text-align: right">-0.2</td>
+      <td style="text-align: right">-0.3333333</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">SLE</td>
+      <td style="text-align: right">-0.2</td>
+      <td style="text-align: right">-0.3333333</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Again we look at the above table, column by column. The variables we want to contrast should have opposite signs and the columns should sum to 0. This contrast matrix leads to the following mean response equations for each of the groups:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\mu_{control} & = \beta_0 + 0.8 \beta_1\\
+\mu_{myos} & = \beta_0 - 0.2 \beta_1 - \frac{1}{3} \beta_2 \\
+\mu_{ra} & = \beta_0 - 0.2 \beta_1 + \beta_2 \\
+\mu_{scler} & = \beta_0 - 0.2 \beta_1 - \frac{1}{3} \beta_2 \\
+\mu_{sle} & = \beta_0 - 0.2 \beta_1 - \frac{1}{3} \beta_2 \\
+\end{align} %]]></script>
+
+<p>To solve for <script type="math/tex">\beta_0</script> we can add up all the equations to get</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\mu_{control}+\mu_{myos}+\mu_{ra}+\mu_{scler}+\mu_{sle} & = 5 \beta_0 \\
+\beta_0 & = \frac{\mu_{control}+\mu_{myos}+mu_{ra}+\mu_{scler}+\mu_{sle}}{5}
+\end{align} %]]></script>
+
+<p>To solve for <script type="math/tex">\beta_1</script> we substract <script type="math/tex">\mu_{control}</script> from the combined mean of <script type="math/tex">\mu_{myos},\mu_{ra},\mu_{scler}</script> and <script type="math/tex">\mu_{sle}</script> which gives:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\mu_{control}-\frac{\mu_{myos}+\mu_{ra}+\mu_{scler}+\mu_{sle}}{4} & = \beta_0 + 0.8 \beta_1 - \frac{4\beta_0 -0.8\beta_1}{4}\\ 
+  & = \beta_0 + 0.8 \beta_1 - \beta_0 + 0.2 \beta_1 \\
+ & = \beta_1  
+\end{align} %]]></script>
+
+<p>To solve for <script type="math/tex">\beta_2</script> we substract <script type="math/tex">\mu_{ra}</script> from the combined mean of <script type="math/tex">\mu_{myos},\mu_{scler}</script> and <script type="math/tex">\mu_{sle}</script> which gives:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\mu_{ra}-\frac{\mu_{myos}+\mu_{scler}+\mu_{sle}}{3} & = \beta_0 - 0.2 \beta_1 + \beta_2 - \frac{3\beta_0 -0.6\beta_1 - \beta_2}{3}\\ 
+  & = \beta_0 - 0.2 \beta_1 + \beta_2 - \beta_0 + 0.2 \beta_1 +\frac{1}{3}\beta_2 \\
+ & = \frac{4}{3} \beta_2 \\
+ \beta_2 & = \frac{3}{4} \left( \mu_{ra}-\frac{\mu_{myos}+\mu_{scler}+\mu_{sle}}{3}  \right)
+\end{align} %]]></script>
+
+<p>First we create the contrast matrix with appropriate row and column names for clarity:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">my.contr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="m">4</span><span class="o">/</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="o">/</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="o">/</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="o">/</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="o">/</span><span class="m">5</span><span class="p">,</span><span class="w">
+                 </span><span class="m">0</span><span class="p">,</span><span class="m">-1</span><span class="o">/</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">-1</span><span class="o">/</span><span class="m">3</span><span class="p">,</span><span class="m">-1</span><span class="o">/</span><span class="m">3</span><span class="p">),</span><span class="w">
+              </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">dimnames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Control"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Myositis"</span><span class="p">,</span><span class="w"> </span><span class="s2">"RA"</span><span class="p">,</span><span class="s2">"Scleroderma"</span><span class="p">,</span><span class="s2">"SLE"</span><span class="p">),</span><span class="w">
+    </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Control_vs_All"</span><span class="p">,</span><span class="s2">"RA_vs_Myos_Scle_SLE"</span><span class="p">)))</span></code></pre></figure>
+
+<p>Then we store the contrasts attribute to the <em>Disease</em> variable. The <code class="highlighter-rouge">how.many</code> argument specifies how many contrasts we want, therefore this should correspond to the number of columns in the contrast matrix.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">contrasts</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Disease</span><span class="p">,</span><span class="n">how.many</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">my.contr</span><span class="w">
+</span><span class="n">contrasts</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Disease</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##             Control_vs_All RA_vs_Myos_Scle_SLE
+## Control                0.8           0.0000000
+## Myositis              -0.2          -0.3333333
+## RA                    -0.2           1.0000000
+## Scleroderma           -0.2          -0.3333333
+## SLE                   -0.2          -0.3333333</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">summary</span><span class="p">(</span><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Disease</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 
+## Call:
+## lm(formula = y ~ Disease, data = data)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.18778 -0.09120  0.01436  0.06365  0.19806 
+## 
+## Coefficients:
+##                            Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                 0.49093    0.02405  20.410 8.72e-16 ***
+## DiseaseControl_vs_All       0.14812    0.06013   2.463   0.0221 *  
+## DiseaseRA_vs_Myos_Scle_SLE  0.01587    0.04658   0.341   0.7365    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1203 on 22 degrees of freedom
+## Multiple R-squared:  0.2194,	Adjusted R-squared:  0.1484 
+## F-statistic: 3.092 on 2 and 22 DF,  p-value: 0.06557</code></pre></figure>
+
+<p>Here we check to make sure that the <code class="highlighter-rouge">lm</code> fit is giving the same result as the formulas derived above:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="cd">#' group level means</span><span class="w">
+</span><span class="n">mu.control</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">which</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Disease</span><span class="o">==</span><span class="s2">"Control"</span><span class="p">),</span><span class="s2">"y"</span><span class="p">])</span><span class="w">
+</span><span class="n">mu.myos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">which</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Disease</span><span class="o">==</span><span class="s2">"Myositis"</span><span class="p">),</span><span class="s2">"y"</span><span class="p">])</span><span class="w">
+</span><span class="n">mu.ra</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">which</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Disease</span><span class="o">==</span><span class="s2">"RA"</span><span class="p">),</span><span class="s2">"y"</span><span class="p">])</span><span class="w">
+</span><span class="n">mu.scler</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">which</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Disease</span><span class="o">==</span><span class="s2">"Scleroderma"</span><span class="p">),</span><span class="s2">"y"</span><span class="p">])</span><span class="w">
+</span><span class="n">mu.sle</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">which</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Disease</span><span class="o">==</span><span class="s2">"SLE"</span><span class="p">),</span><span class="s2">"y"</span><span class="p">])</span><span class="w">
+
+</span><span class="cd">#' beta0</span><span class="w">
+</span><span class="n">mean</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">mu.control</span><span class="p">,</span><span class="n">mu.myos</span><span class="p">,</span><span class="n">mu.ra</span><span class="p">,</span><span class="n">mu.scler</span><span class="p">,</span><span class="n">mu.sle</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0.4909311</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="cd">#' beta1</span><span class="w">
+</span><span class="n">mu.control</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">mu.myos</span><span class="p">,</span><span class="n">mu.ra</span><span class="p">,</span><span class="n">mu.scler</span><span class="p">,</span><span class="n">mu.sle</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0.1481237</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="cd">#' beta2</span><span class="w">
+</span><span class="p">(</span><span class="n">mu.ra</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">mu.myos</span><span class="p">,</span><span class="n">mu.scler</span><span class="p">,</span><span class="n">mu.sle</span><span class="p">)))</span><span class="o">*</span><span class="p">(</span><span class="m">3</span><span class="o">/</span><span class="m">4</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0.01587466</code></pre></figure>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="http://www.unc.edu/courses/2006spring/ecol/145/001/docs/lectures/lecture26.htm">http://www.unc.edu/courses/2006spring/ecol/145/001/docs/lectures/lecture26.htm</a></li>
+  <li><a href="http://www.ats.ucla.edu/stat/r/library/contrast_coding.htm#User">http://www.ats.ucla.edu/stat/r/library/contrast_coding.htm#User</a></li>
+</ul>
+
+
+  </article>
+
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2018 Sahir Bhatnagar.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>, <a href="https://github.com/alshedivat/al-folio">al-folio</a>, <a href="http://daringfireball.net/projects/markdown/">markdown</a>, <a href="https://cran.r-project.org/">R</a>, <a href="http://yihui.name/knitr/">knitr</a>, <a href="http://johnmacfarlane.net/pandoc/">pandoc</a>, <a href="https://github.com/mozilla/Fira">Fira</a> and <a href="https://github.com/sahirbhatnagar/sahirbhatnagar.github.io">GitHub</a>
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="https://sahirbhatnagar.com/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+<script src="https://sahirbhatnagar.com/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/academicons.min.css">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60189402-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+
+</html>
