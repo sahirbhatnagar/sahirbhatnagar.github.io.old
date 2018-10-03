@@ -18,6 +18,9 @@ title: talks
 
 ### 2018
 
+* **Lady Davis Institute** _JGH Epidemiology Seminar series_  
+[Pick your favorite buzzword: Data Science, Big Data, Machine Learning, Data Science , Big Data, Machine Learning](https://docs.google.com/presentation/d/1K9sRH2gNE5Et2oUF11QjY4XHmWNG6OOZ0ZAIVWOc6EY/edit?usp=sharing)
+
 * **JSM 2018, Vancouver** _Joint Statistical Meeting (Contributed)_    
 [A General Framework for Variable Selection in Linear Mixed Models with Applications to Genetic Studies with Structured Populations](/assets/pdf/Bhatnagar_JSM_2018.pdf)    
 
