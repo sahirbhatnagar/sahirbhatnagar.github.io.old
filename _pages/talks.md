@@ -15,6 +15,18 @@ title: talks
 ***
 
 
+### 2019
+
+* **UQAM** _Sommet étudiant de la statistique à Montréal. Conférence plénière._  
+[Miser sur la sparsité](/assets/pdf/Bhatnagar_miser_sur_la_sparsite_SESAME2019.pdf)
+
+* **McGill University** _Environmental Epi Seminar_    
+[Data Organization in Spreadsheets and Tidy Data](https://github.com/sahirbhatnagar/cleandata)    
+
+<br>
+
+
+
 
 ### 2018
 
