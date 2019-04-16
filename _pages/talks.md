@@ -75,6 +75,9 @@ title: talks
 [Introduction to knitr and RMarkdown](http://www.slideshare.net/sahirbhatnagar/an-introduction-to-knitr-and-r-markdown)
 
 
+* **HIV/HCV Co-infection Cohort Journal Club** _Montr&eacute;al General Hospital_  
+[Competing Risks](https://github.com/sahirbhatnagar/comprisk)
+
 * **CHSGM 2015, Vancouver** _Canadian Human and Statistical Genetics Meeting (Contributed)_  
 [DNA methylation and Expression to predict childhood obesity](http://www.slideshare.net/sahirbhatnagar/sahir-chsgm2015)
 
