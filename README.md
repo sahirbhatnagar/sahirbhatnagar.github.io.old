@@ -1,3 +1,10 @@
+# To publish
+
+Make changes or additions to `source` branch. Commit the changes (you do not need to push to remote). Then, from the root directory in the `source` branch run `./bin/deploy`. This will build the site and push to master, and also push to source. 
+
+
+
+
 # al-folio
 
 [![demo](https://img.shields.io/badge/theme-demo-brightgreen.svg)](https://alshedivat.github.io/al-folio/)
