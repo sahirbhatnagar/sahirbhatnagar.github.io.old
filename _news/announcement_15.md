@@ -4,4 +4,4 @@ date: 2019-05-27 07:59:00-0400
 inline: true
 ---
 
-I'll be giving a 1-day workshop on [Creating an R package](https://forms.gle/EAshr6eLcqbj1VQx6) at McGill.  
+I'll be giving a 1-day workshop on [Creating an R package](https://forms.gle/EAshr6eLcqbj1VQx6) at McGill.   
