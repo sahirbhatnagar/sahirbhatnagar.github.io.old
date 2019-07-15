@@ -3,7 +3,15 @@ layout: page
 permalink: /teaching/
 title: teaching
 description: Materials for full term courses, short courses and tutorials that I've taught or created.
+years: [2019, 2018, 2017, 2016, 2015, 2013]
 ---
+
+
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 
 ## Graduate Courses
 <hr>
@@ -13,11 +21,14 @@ description: Materials for full term courses, short courses and tutorials that I
 
 
 
-
 ## Short Courses
-<hr>
 
-{% bibliography -f papers -q @*[status=short]* %}
+
+
+{% for y in page.years %}
+  <h3 class="year">{{y}}</h3>
+  {% bibliography -f papers -q @*[status=short,year={{y}}]* %}
+{% endfor %}
 
 
 
@@ -30,11 +41,6 @@ description: Materials for full term courses, short courses and tutorials that I
 
 
 
-## Teaching Assistant
-<hr>
-
-
-{% bibliography -f papers -q @*[status=TA]* %}
 
 
 

@@ -4,7 +4,7 @@ permalink: /talks/
 title: talks
 ---
 
-## Contents
+
 {:.no_toc}
 
 * Will be replaced with the ToC, excluding the "Contents" header
@@ -16,6 +16,9 @@ title: talks
 
 
 ### 2019
+
+* **HDDA IX, Uppsala University, Sweden** _Perspectives on high-dimensional data analysis workshop (Contributed)_    
+[Strong Additive Interaction Learning](/assets/pdf/bhatnagar_HDDA_2019.pdf)
 
 * **UQAM** _Sommet étudiant de la statistique à Montréal. Conférence plénière._  
 [Miser sur la sparsité](/assets/pdf/Bhatnagar_miser_sur_la_sparsite_SESAME2019.pdf)
@@ -122,7 +125,7 @@ title: talks
 
 <br><br>
 
-
+<!--
 ## Workshops
 
 ***
@@ -147,7 +150,7 @@ title: talks
 [contents available on GitHub](https://github.com/sahirbhatnagar/knitr-tutorial)
 
 <br><br>
-
+-->
 
 
 
