@@ -24,3 +24,6 @@ I am an Assistant Professor in the <a href="https://www.mcgill.ca/epi-biostat-oc
 <!--<br><br>
 Prior to my current training, I completed a BSc in Actuarial Science at <a href="http://www.concordia.ca/academics/undergraduate/actuarial-mathematics.html" target="_blank">Concordia University</a> and worked in pension plan administration and valuations for 4 years at a consulting firm in Montreal. During this time I became an <a href="https://www.soa.org/education/exam-req/edu-asa-req.aspx" target="_blank">Associate of the Society of Actuaries</a>. I then went on to complete an MSc in Biostatistics from <a href="http://www.mast.queensu.ca/" target="_blank">Queen's University</a> under the supervision of <a href="http://post.queensu.ca/~pengp/" target="_blank">Dr. Paul Peng</a> and <a href="http://www.mast.queensu.ca/~cdlin/" target="_blank">Dr. Devon Lin</a>. -->
 </p>
+
+## Research Opportunities
+I have opportunities for graduate and undergraduate students to assist with various research projects. Please contact me to learn about specific research and training opportunities.

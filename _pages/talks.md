@@ -17,6 +17,9 @@ title: talks
 
 ### 2019
 
+* **CMStatistics, London, UK** _12th International Conference on Computational and Methodological Statistics (Invited)_  
+[Simultaneous SNP selection and adjustment for population structure in high dimensional prediction models](/assets/pdf/Bhatnagar_CMStatistics_2019.pdf)
+
 * **HDDA IX, Uppsala University, Sweden** _Perspectives on high-dimensional data analysis workshop (Contributed)_    
 [Strong Additive Interaction Learning](/assets/pdf/bhatnagar_HDDA_2019.pdf)
 
