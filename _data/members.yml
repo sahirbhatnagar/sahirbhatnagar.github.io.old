@@ -13,7 +13,7 @@
               
 
 - name: Julien St-Pierre
-  degrees: PhD
+  degrees: MSc
   image: team_julien.jpg
   altimage: 
   position: PhD Student
@@ -24,6 +24,7 @@
               I have worked as a research assistant at CRCHUM before joining a clinical research organization as a statistical programmer. I am interested in generalized linear mixed models and penalized regression methods with an emphasis on rare-variants association tests. I am cosupervised by Dr. Sahir Bhatnagar (Mcgill) and Dr. Karim Oualkacha (UQAM)
    
 - name: Jesse Islam
+  degrees: BSc
   image: team_jesse.png
   altimage: 
   position: PhD Student
@@ -34,6 +35,7 @@
   description:  I'm a PhD student in Quantitative Life Sciences. 
 
 - name: Zeyu Bian
+  degrees: MSc
   image: enlarge_team_chris.png
   altimage:
   position: PhD Student
@@ -46,6 +48,7 @@
 
   
 - name: Kai Yang
+  degrees: MSc
   image: shrink_team_kai.jpg
   altimage: 
   position: PhD Student
