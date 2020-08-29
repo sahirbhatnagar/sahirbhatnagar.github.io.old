@@ -67,15 +67,18 @@ description:
     <div class="col-sm-8">
         <p class="text-justify">{{person.description | markdownify}}</p>
     </div>
+<br><br>
 </div>
 <hr>
   {% endfor %}
 {% endif %}
 
+
+<!--
 ## students
 {% for student in site.data.students %}
-
-<!-- The paddingtop and margin-top edits allow anchors to link properly. -->
+-->
+<!-- The paddingtop and margin-top edits allow anchors to link properly. 
 <div id = "{{student.name | replace: ' ', '-'}}" class="row" style="padding-top: 60px; margin-top: -60px; padding-bottom: 20px;">
   <strong>{{student.name}}{% if student.degrees %}, {{student.degrees}} {% endif %}</strong> <br>
   {{student.position}} <br>
@@ -96,8 +99,8 @@ description:
 
 ## alumni
 {% for alum in site.data.alumni %}
-
-<!-- The paddingtop and margin-top edits allow anchors to link properly. -->
+-->
+<!-- The paddingtop and margin-top edits allow anchors to link properly. 
 <div id = "{{alum.name | replace: ' ', '-'}}" class="row" style="padding-top: 60px; margin-top: -60px; padding-bottom: 20px;">
   <strong>{{alum.name}}{% if alum.degrees %}, {{alum.degrees}} {% endif %}</strong> <br>
   <i>previously:</i> {{alum.previously}} <br>
@@ -120,3 +123,4 @@ description:
   {{collaborator.position}}  
   {% if collaborator.website %} <i class="fa fa-globe"></i> <a href= "{{collaborator.website}}" target="_blank">{{collaborator.website}}</a>  {% endif %}
 {% endfor %}
+-->
