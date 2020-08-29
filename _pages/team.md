@@ -13,7 +13,9 @@ description:
     <div>
         <h4>{{person.name}}{% if person.degrees %}, {{person.degrees}} {% endif %}</h4> 
         {{person.position}} <br>
+        {% if person.email %}
         <i class="fa fa-envelope"></i> <em>{{person.email}}</em> <br>
+        {% endif %}
         {% if person.twitter %}
           <i class="fab fa-twitter"></i> <a href= "http://twitter.com/{{person.twitter}}" target="_blank"> @{{person.twitter}} </a> <br>
         {% endif %}
@@ -29,11 +31,11 @@ description:
         {% if person.orcid %}
           <i class="ai ai-orcid"></i> <a href="http://{{person.orcid}}" target="_blank"> {{person.orcid}}</a> <br>
         {% endif %}
-
     </div>
     <div class="col-sm-8">
         <p class="text-justify">{{person.description | markdownify}}</p>
     </div>
+    <br><br>
 </div>
 <hr>
 {% endfor %}
@@ -62,12 +64,10 @@ description:
         {% if person.orcid %}
           <i class="ai ai-orcid"></i> <a href="http://{{person.orcid}}" target="_blank"> {{person.orcid}}</a> <br>
         {% endif %}
-
     </div>
     <div class="col-sm-8">
         <p class="text-justify">{{person.description | markdownify}}</p>
     </div>
-<br><br>
 </div>
 <hr>
   {% endfor %}

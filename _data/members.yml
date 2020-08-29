@@ -5,7 +5,7 @@
   position: Principal Investigator
   #email: winston.chiong (at) ucsf.edu
   website: https://sahirbhatnagar.com
- # scholar: jLpCQugAAAAJ&hl
+  scholar: 9XJum2AAAAAJ&hl
   twitter: "syfi_24"
   github: sahirbhatnagar
   # orcid: "orcid.org/0000-0001-9188-1920"
@@ -29,11 +29,24 @@
   position: PhD Student
 #  email: cailin.lechner (at) ucsf.edu
  # scholar: 
-  website: jesseislam.com
+  github: Jesse-Islam
+  website: https://www.jesseislam.com/
   description:  I'm a PhD student in Quantitative Life Sciences. 
+
+- name: Zeyu Bian
+  image: enlarge_team_chris.png
+  altimage:
+  position: PhD Student
+#  email: Clayton.young (at) ucsf.edu
+ # scholar:
+ # website:
+  github: ZeyuBian
+  description:  I am from China, currently I am a first year PhD student in Biostatistics at McGill University under the supervision of Dr. Sahir Bhatnagar and 
+              Dr. Erica Moodie. My research is focus on Dynamic Treatment Regimens (Causal Inference, Statistical Reinforcement Learning and Personalized Medicine) and Variable Selection.
+
   
 - name: Kai Yang
-  image: team_kai.jpg
+  image: shrink_team_kai.jpg
   altimage: 
   position: PhD Student
 #  email: heather.romero-kornblum (at) ucsf.edu
@@ -41,17 +54,8 @@
   website: 
   description: Kai's research mainly focuses on computational methods for high-dimensional nonconvex sparse learning, which 
               involves the development and application of continuous optimization methods on objectives from high-dimensional statistical machine learning models. Currently, Kai is interested in accelerated line search methods
-                 
             
-- name: Zeyu Bian
-  image: team_chris.png
-  altimage:
-  position: PhD Student
-#  email: Clayton.young (at) ucsf.edu
- # scholar:
- # website:
-  description:  I am from China, currently I am a first year PhD student in Biostatistics at McGill University under the supervision of Dr. Sahir Bhatnagar and Dr. Erica Moodie. My research is focus on Dynamic Treatment Regimens (Causal Inference, Statistical Reinforcement Learning and Personalized Medicine) and Variable Selection.
-
+      
                
 - name: Mohan Zhao
   image: team_mohan.jpeg
@@ -59,6 +63,7 @@
   position: Undergraduate student
 #  email: celeste.fong (at) ucsf.edu
  # scholar:
+  github: mohan-zhao
   website: http://linkedin.com/in/mohan-zhao-479a2b191
   description:  Currently a final year undergraduate in McGill, Mathematics major and Computer Science minor, Pursuing a Data Science Master degree and internships. Field of interests in Machine Learning and Database System. My Research is calling C++ within R to compute Tuning-free ridge estimators for high-dimensional generalized linear models to improve the spend and wrap it into a r package. I also have an ongoing research in Causal Inference mainly designing causal inference models for further practical applications.
 
