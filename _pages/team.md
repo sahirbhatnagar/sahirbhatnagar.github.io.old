@@ -35,7 +35,7 @@ description:
     <div class="col-sm-8">
         <p class="text-justify">{{person.description | markdownify}}</p>
     </div>
-    <br><br>
+    <br><br><br><br>
 </div>
 <hr>
 {% endfor %}
@@ -95,20 +95,27 @@ description:
 </div>
 
 {% endfor %}
+-->
+
+
 ---
 
 ## alumni
 {% for alum in site.data.alumni %}
--->
-<!-- The paddingtop and margin-top edits allow anchors to link properly. 
+
+<!-- The paddingtop and margin-top edits allow anchors to link properly. -->
 <div id = "{{alum.name | replace: ' ', '-'}}" class="row" style="padding-top: 60px; margin-top: -60px; padding-bottom: 20px;">
-  <strong>{{alum.name}}{% if alum.degrees %}, {{alum.degrees}} {% endif %}</strong> <br>
-  <i>previously:</i> {{alum.previously}} <br>
-  <i>now:</i> {{alum.now}}<br>
-    {% if alum.website %} <i class="fa fa-globe"></i> <a href= "{{alum.website}}" target="_blank">{{alum.website}}</a>  {% endif %}
-    {% for paper in site.data.publications %}
-  {% if paper.authors contains alum.pubmed_name %}
-  <div style="margin-left: 2.5em; padding-top: 8px; padding-bottom: 5px; ">{{paper.authors | remove: '**'}} <a href="/papers/index.html#{{paper.title | replace: ' ', '-' |  remove: '.'}}">{{paper.title}}</a> {{paper.details}}</div>
+	<img style="float: right; width: 42%; padding-left: 20px;" src="{{ alum.image | prepend: '/assets/img/' | prepend: site.baseurl | prepend: site.url }}" alt="photo of {{alum.name}}">
+	<div>
+  		<strong>{{alum.name}}{% if alum.degrees %}, {{alum.degrees}} {% endif %}</strong> <br>
+  		<i>previously:</i> {{alum.previously}} <br>
+  		<i>now:</i> {{alum.now}}<br>
+    		{% if alum.website %} <i class="fa fa-globe"></i> <a href= "{{alum.website}}" target="_blank">{{alum.website}}</a>  {% endif %}
+    		{% for paper in site.data.publications %}
+  		{% if paper.authors contains alum.pubmed_name %}
+  	</div>
+  <div style="margin-left: 2.5em; padding-top: 8px; padding-bottom: 5px; ">{{paper.authors | remove: '**'}} <a href="/papers/index.html#{{paper.title | replace: ' ', '-' |  remove: '.'}}">{{paper.title}}</a> {{paper.details}}
+  </div>
   {% endif %}
   {% endfor %}
 </div>
@@ -116,6 +123,8 @@ description:
 
 ---
 
+
+<!--
 ## collaborators
 
 {% for collaborator in site.data.collaborators %}
