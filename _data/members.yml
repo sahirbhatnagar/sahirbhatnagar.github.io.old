@@ -9,7 +9,11 @@
   twitter: "syfi_24"
   github: sahirbhatnagar
   # orcid: "orcid.org/0000-0001-9188-1920"
-  description: 
+  description: Sahir Bhatnagar is a Biostatistician and Assistant Professor in the Departments of Epidemiology, Biostatistics and Occupational Health, and Diagnostic 
+               Radiology at McGill University. His work focuses on developing statistical methods for analyzing high-dimensional data in genomics and 
+               radiomics. He is a proponent of open-source software and has authored several R packages which have been downloaded over 100K times according 
+               to official CRAN logs. He enjoys working on multidisciplinary teams and has active collaborations with epidemiologists, colorectal surgeons, radiologists, 
+               and human geneticists. For more information, please visit https://sahirbhatnagar.com/.
               
 
 - name: Julien St-Pierre
