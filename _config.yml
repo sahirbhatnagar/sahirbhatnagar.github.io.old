@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 name: Sahir Bhatnagar
-email: sahir.bhatnagar@gmail.com
+email: sahir.bhatnagar@mcgill.ca
 description: > # this means to ignore newlines until "url:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
