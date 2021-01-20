@@ -5,6 +5,18 @@ title: team
 description: 
 ---
 
+
+<!--
+<img src="/assets/img/team_2020.png" alt="Team 2020" width="700" height="500">
+-->
+
+<figure>
+  <img src="/assets/img/team_2020.png" alt="Trulli" style="width:110%">
+  <figcaption>Holiday Party 2020 - Pandemic style.</figcaption>
+</figure>
+
+<br><br>
+
 {% for person in site.data.members %}
 
 <!-- The paddingtop and margin-top edits allow anchors to link properly. -->
@@ -118,6 +130,7 @@ description:
   </div>
   {% endif %}
   {% endfor %}
+    <br><br><br><br><br><br><br><br>
 </div>
 {% endfor %}
 

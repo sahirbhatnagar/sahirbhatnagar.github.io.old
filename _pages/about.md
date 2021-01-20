@@ -26,4 +26,4 @@ Prior to my current training, I completed a BSc in Actuarial Science at <a href=
 </p>
 
 ## Research Opportunities
-I have opportunities for graduate and undergraduate students to assist with various research projects. Please contact me to learn about specific research and training opportunities.
+I have opportunities for graduate and undergraduate students to assist with various research projects. You can email me to learn about specific research and training opportunities. Please attach your transcripts and CV and describe how your research interests align with mine. Be specific. I generally don't respond to generic emails. 
