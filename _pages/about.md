@@ -49,7 +49,7 @@ I have opportunities for graduate and undergraduate students to assist with vari
 <p>
 <br> 
 <b>Undergraduates at McGill:</b>
-I welcome these emails, but they should include a CV, research interests, list of relevant course work, a transcript, and your programming experience. The subject line should contain the word "consideration for undergraduate research project" to indicate these instructions have been read.
+I welcome these emails, but they should include a CV, research interests, list of relevant course work, a transcript, and your programming experience. The subject line should contain the word "consideration for undergraduate research project" to indicate these instructions have been read. <b>NEW: <a href="https://www.mcgill.ca/medhealthsci-gradstudies/funding-opportunities/undergraduate-students/nserc-usra" target="_blank">Natural Sciences and Engineering Research Council of Canada - Undergraduate Student Research Awards.</a> Deadline is February 15, 2021. Contact me if you want to apply.</b>
 <br/><br/>
 <b>Epidemiology graduate students and Medical residents at McGill:</b>
 Include a brief description of your research interests and why you think I would be a good fit to be your co-supervisor.
