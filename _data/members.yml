@@ -63,7 +63,29 @@
               involves the development and application of continuous optimization methods on objectives from high-dimensional statistical machine learning models. Currently, Kai is interested in accelerated line search methods
 
 
-               
+- name: Jingyan Fu
+  degrees: BSc
+  image: team_janet.png
+  website: https://www.linkedin.com/in/jingyan-fu-3857381a6/
+  description:  I'm a second year master student in Biostatistics at McGill University. I’m co-supervised by Dr. Sahir Bhatnagar and Dr. James Brophy. My current interest is in the Bayesian shrinkage methods and variable selection in high dimensional data.
+
+
+- name: Zhiwei Zhang
+  image: team_alouette.jpg
+  position: Undergraduate student
+#  email: celeste.fong (at) ucsf.edu
+ # scholar:
+  description:  Graduated from McGill with a Bachelor of Quantitative Biology, I studied the statistics from Head and Neck Squamous Cell Carcinoma with Dual Energy CT scans under Dr. Sahir Bhatnagar’s supervision. Dual Energy CT is a new diagnostic method that reconstructs scanning images at multiple energy levels. I investigated whether the additional information is better at identifying the tumour signal in comparison to conventional single energy image.
+I am currently a Human Genetics PhD student in Dr. Simon Gravel’s lab under the Kyoto-McGill International Collaborative Program in Genomic Medicine. I am studying how evolution affected patterns of variation encoded in our genome and among populations.
+
+
+- name: Cindy Leung Soo
+  degrees: BSc
+  image: team_cindy.jpg
+  position: Masters student
+  description:  I am a Masters student in Epidemiology and I previously studied Microbiology & Immunology (major) as well as Political Sciences (minor). My research currently focuses on using Bayesian regression to predict HIV infection in the South African context. I am co-supervised by Dr. Sahir Bhatnagar and Dr. Nitika Pai.
+
+
 - name: Mohan Zhao
   image: team_mohan.jpeg
   altimage:
