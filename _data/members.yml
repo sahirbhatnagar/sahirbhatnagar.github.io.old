@@ -20,7 +20,7 @@
   degrees: MSc
   image: team_julien.jpg
   altimage: 
-  position: PhD Student
+  position: PhD Student (Biostatistics)
 #  email: julien.stpierre (at) mail.mcgill.ca
 #  website: https://profiles.ucsf.edu/tobias.haeusermann
   # scholar: 5kUDcJ0AAAAJ
@@ -31,7 +31,7 @@
   degrees: BSc
   image: team_jesse.png
   altimage: 
-  position: PhD Student
+  position: PhD Student (QLS)
 #  email: cailin.lechner (at) ucsf.edu
  # scholar: 
   github: Jesse-Islam
@@ -42,7 +42,7 @@
   degrees: MSc
   image: enlarge_team_chris.png
   altimage:
-  position: PhD Student
+  position: PhD Student (Biostatistics)
 #  email: Clayton.young (at) ucsf.edu
  # scholar:
  # website:
@@ -55,8 +55,7 @@
   degrees: MSc
   image: team_kai.jpg
   altimage: 
-  position: PhD Student
-#  email: heather.romero-kornblum (at) ucsf.edu
+  position: PhD Student (Biostatistics)
   scholar: 
   website: 
   description: Kai's research mainly focuses on computational methods for high-dimensional nonconvex sparse learning, which 
@@ -64,6 +63,7 @@
 
 
 - name: Jingyan Fu
+  position: Masters Student (Biostatistics)
   degrees: BSc
   image: team_janet.png
   website: https://www.linkedin.com/in/jingyan-fu-3857381a6/
@@ -75,7 +75,7 @@
 - name: Cindy Leung Soo
   degrees: BSc
   image: team_cindy.jpg
-  position: Masters student
+  position: Masters student (Epidemiology)
   description:  I am a Masters student in Epidemiology and I previously studied Microbiology & Immunology (major) as well as Political Sciences (minor). My research currently focuses on using Bayesian regression to predict HIV infection in the South African context. I am co-supervised by Dr. Sahir Bhatnagar and Dr. Nitika Pai.
 
 

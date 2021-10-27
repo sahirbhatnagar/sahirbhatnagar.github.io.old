@@ -112,14 +112,15 @@ description:
 
 ---
 
-## alumni
+<!--
 {% for alum in site.data.alumni %}
 
-<!-- The paddingtop and margin-top edits allow anchors to link properly. -->
+<!-- The paddingtop and margin-top edits allow anchors to link properly. 
 <div id = "{{alum.name | replace: ' ', '-'}}" class="row" style="padding-top: 60px; margin-top: -60px; padding-bottom: 20px;">
-	<img style="float: right; width: 42%; padding-left: 20px;" src="{{ alum.image | prepend: '/assets/img/' | prepend: site.baseurl | prepend: site.url }}" alt="photo of {{alum.name}}">
+<br><br><br><br>
+	<img style="float: right; width: 42%; padding-left: 20px;" src="{{ alum.image | prepend: '/assets/img/' | prepend: site.baseurl | prepend: site.url }}" alt="photo of {{alum.name}}"> <br>
 	<div>
-  		<strong>{{alum.name}}{% if alum.degrees %}, {{alum.degrees}} {% endif %}</strong> <br>
+  		<strong>{{alum.name}}{% if alum.degrees %}, {{alum.degrees}} {% endif %}</strong> 
   		<i>previously:</i> {{alum.previously}} <br>
   		<i>now:</i> {{alum.now}}<br>
     		{% if alum.website %} <i class="fa fa-globe"></i> <a href= "{{alum.website}}" target="_blank">{{alum.website}}</a>  {% endif %}
@@ -129,12 +130,51 @@ description:
   <div style="margin-left: 2.5em; padding-top: 8px; padding-bottom: 5px; ">{{paper.authors | remove: '**'}} <a href="/papers/index.html#{{paper.title | replace: ' ', '-' |  remove: '.'}}">{{paper.title}}</a> {{paper.details}}
   </div>
   {% endif %}
-    <br><br><br><br><br><br><br><br>
   {% endfor %}
 </div>
 {% endfor %}
+-->
 
----
+
+## alumni
+
+{% for alum in site.data.alumni %}
+
+<!-- The paddingtop and margin-top edits allow anchors to link properly. -->
+<div id = "{{alum.name | replace: ' ', '-'}}" class="row" style="padding-top: 60px; margin-top: -60px;">
+    <img style="float: right; width: 42%; padding-left: 20px;" src="{{ alum.image | prepend: '/assets/img/' | prepend: site.baseurl | prepend: site.url }}" alt="photo of {{alum.name}}">
+    <div>
+        <h4>{{alum.name}}{% if alum.degrees %}, {{alum.degrees}} {% endif %}</h4> 
+        {{alum.position}} <br>
+        {% if alum.email %}
+        <i class="fa fa-envelope"></i> <em>{{alum.email}}</em> <br>
+        {% endif %}
+      <i>previously:</i> {{alum.previously}} <br>
+  		<i>now:</i> {{alum.now}}<br>
+        {% if alum.twitter %}
+          <i class="fab fa-twitter"></i> <a href= "http://twitter.com/{{alum.twitter}}" target="_blank"> @{{alum.twitter}} </a> <br>
+        {% endif %}
+        {% if alum.website %}
+          <i class="fa fa-globe"></i> <a href= "{{alum.website}}" target="_blank">{{alum.website}}</a> <br>
+        {% endif %}
+        {% if alum.github %}
+          <i class="fab fa-github"></i> <a href= "https://github.com/{{alum.github}}" target="_blank"> {{alum.github}} </a> <br>
+        {% endif %}
+        {% if alum.scholar %}
+          <i class="ai ai-google-scholar"></i> <a href= "http://scholar.google.com/citations?user={{alum.scholar}}" target="_blank"> Scholar Citations </a> <br>
+        {% endif %}
+        {% if alum.orcid %}
+          <i class="ai ai-orcid"></i> <a href="http://{{alum.orcid}}" target="_blank"> {{alum.orcid}}</a> <br>
+        {% endif %}		
+    </div>
+    <div class="col-sm-8">
+        <p class="text-justify">{{alum.description | markdownify}}</p>
+    </div>
+    <br><br><br><br>
+</div>
+<hr>
+{% endfor %}
+
 
 
 <!--
