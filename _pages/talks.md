@@ -15,6 +15,21 @@ title: talks
 ***
 
 
+### 2021
+
+* **Memorial University** _Department of Mathematics and Statistics (Invited)_ Advances in mixed effects models for prediction
+and variable selection in high-dimensional data
+
+* **Université de Sherbrooke** _Département de mathématiques (Invited)_ Avances dans les modèles mixtes pour la prévision et la sélection des variables dans les données de grande dimension
+
+* **Western University** _Department of Statistical and Actuarial Sciences (Invited)_ Sparse Additive Interaction Learning
+
+* **McGill University** _Quantitative Life Sciences (Invited)_ Variable selection in high-dimensional genetic data
+
+### 2020
+
+* **UQAM** _Département de mathématiques (Invited)_ Avances dans les modèles mixtes pour la prévision et la sélection des variables dans les données de grande dimension
+
 ### 2019
 
 * **CMStatistics, London, UK** _12th International Conference on Computational and Methodological Statistics (Invited)_  
