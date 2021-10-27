@@ -129,8 +129,8 @@ description:
   <div style="margin-left: 2.5em; padding-top: 8px; padding-bottom: 5px; ">{{paper.authors | remove: '**'}} <a href="/papers/index.html#{{paper.title | replace: ' ', '-' |  remove: '.'}}">{{paper.title}}</a> {{paper.details}}
   </div>
   {% endif %}
-  {% endfor %}
     <br><br><br><br><br><br><br><br>
+  {% endfor %}
 </div>
 {% endfor %}
 
