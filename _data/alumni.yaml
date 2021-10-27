@@ -24,4 +24,28 @@
             cancer and diverticulitis. I am co-supervised by Dr. Marylise Boutros. 
 
 
+- name: Zhiwei Zhang
+  image: team_alouette.jpg
+  previously: Undergraduate student
+  now: PhD student in Human Genetics in Dr. Simon Gravel's lab under the Kyoto-McGill International Collaborative Program in Genomic Medicine
+  description:  Graduated from McGill with a Bachelor of Quantitative Biology, I studied the statistics from Head and Neck Squamous Cell Carcinoma with Dual Energy CT scans under Dr. Sahir Bhatnagar’s supervision. Dual Energy CT is a new diagnostic method that reconstructs scanning images at multiple energy levels. I investigated whether the additional information is better at identifying the tumour signal in comparison to conventional single energy image.
+                I am currently a Human Genetics PhD student . I am studying how evolution affected patterns of variation encoded in our genome and among populations.
+
+
+- name: Peter Her
+  image: team_peter.jpg
+  altimage:
+  previously: Undergraduate student
+  now: Masters student in Medical Biophysics, University of Toronto
+  description:  My name is Peter and I'm a U3 undergraduate student at McGill University pursuing a major in Pharmacology. I was born in Montreal and love the winter. I was given the opportunity to learn the principles of data science with the help of Dr. Bhatnagar. While also applying them by helping out on a COVID-19 mobility project where I manipulate, visualize and analyze data.
+
+
+- name: Mohan Zhao
+  image: team_mohan.jpeg
+  altimage:
+  previously: Undergraduate student
+  now: PhD student in Computer Science, University of Toronto
+  github: mohan-zhao
+  website: http://linkedin.com/in/mohan-zhao-479a2b191
+  description:  Currently a final year undergraduate in McGill, Mathematics major and Computer Science minor, Pursuing a Data Science Master degree and internships. Field of interests in Machine Learning and Database System. My Research is calling C++ within R to compute Tuning-free ridge estimators for high-dimensional generalized linear models to improve the spend and wrap it into a r package. I also have an ongoing research in Causal Inference mainly designing causal inference models for further practical applications.
 
