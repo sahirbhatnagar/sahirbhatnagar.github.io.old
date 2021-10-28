@@ -43,17 +43,17 @@ Below is my ever increasing collection of useful web resources (in no particular
 ***
 
 
-## Mentors
+## Select Collaborators
 
-* [Celia Greenwood](http://www.mcgill.ca/statisticalgenetics/home-page)
-* [Yi Yang](http://www.math.mcgill.ca/yyang/)
-* [Devon Lin](http://www.mast.queensu.ca/~cdlin/)
-* [Paul Peng](http://post.queensu.ca/~pengp/)
 * [James Hanley](http://www.medicine.mcgill.ca/epidemiology/hanley/)
 * [Olli Saarela](http://individual.utoronto.ca/osaarela/)
 * [Erica Moodie](http://www.medicine.mcgill.ca/epidemiology/moodie/)
-* [Andrea Benedetti](https://www.researchgate.net/profile/Andrea_Benedetti)
-* [David Stephens](http://www.math.mcgill.ca/~dstephens/)
+* [Brent Richards](https://www.mcgill.ca/genepi/)
+* [Shirin Golchi](http://sgolchi.research.mcgill.ca/sgolchi.local/index.html)
+* [Maxime Turgeon](https://www.maxturgeon.ca/)
+* [Celia Greenwood](http://www.mcgill.ca/statisticalgenetics/home-page)
+* [Yi Yang](http://www.math.mcgill.ca/yyang/)
+* [Karim Oualkacha](https://karimoualkacha.uqam.ca/en/home/)
 
 ***
 
