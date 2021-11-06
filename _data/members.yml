@@ -81,6 +81,13 @@
 
 
 
+- name: Arthur Ayestas Hilgert
+  position: Undergraduate Student 
+  image: team_arthur.png
+  website: https://www.linkedin.com/in/arthur-ayestas-hilgert/
+  github: aahilgert
+  description:  I am currently an undergraduate at McGill University pursuing a BSc in Computer Science along with a minor in Mathematics. My research involves helping build penalized regression libraries in R using C++, and the parallelization of algorithms using Nvidia GPUs. My interests include neural networks, linear modelling, applied linear algebra, graph theory, and GPU computing.
+
 
 
                 
