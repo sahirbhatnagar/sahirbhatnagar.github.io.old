@@ -17,15 +17,17 @@ title: talks
 
 ### 2021
 
-* **Memorial University** _Department of Mathematics and Statistics (Invited)_ [Advances in mixed effects models for prediction and variable selection in high-dimensional data](/assets/pdf/Bhatnagar_Memorial_2021_final.pdf)
+* **UNC Greensboro** _Department of Mathematics and Statistics (Invited)_ [Sparse Additive Interaction Learning](/assets/pdf/bhatnagar_UNC_2021.pdf)
 
-* **Université de Sherbrooke** _Département de mathématiques (Invited)_ [Avances dans les modèles mixtes pour la prévision et la sélection des variables dans les données de grande dimension](/assets/pdf/Bhatnagar_Sherbrooke_2020_final.pdf)
+* **Memorial University** _Department of Mathematics and Statistics (Invited)_ [Advances in mixed effects models for prediction and variable selection in high-dimensional data](/assets/pdf/Bhatnagar_Memorial_2021_final.pdf)
 
 * **Western University** _Department of Statistical and Actuarial Sciences (Invited)_ [Sparse Additive Interaction Learning](/assets/pdf/bhatnagar_western_2021.pdf)
 
 * **McGill University** _Quantitative Life Sciences (Invited)_ [Variable selection in high-dimensional genetic data](/assets/pdf/Bhatnagar_QLS_2021.pdf)
 
 ### 2020
+
+* **Université de Sherbrooke** _Département de mathématiques (Invited)_ [Avances dans les modèles mixtes pour la prévision et la sélection des variables dans les données de grande dimension](/assets/pdf/Bhatnagar_Sherbrooke_2020_final.pdf)
 
 * **UQAM** _Département de mathématiques (Invited)_ [Avances dans les modèles mixtes pour la prévision et la sélection des variables dans les données de grande dimension](/assets/pdf/Bhatnagar_UQAM_2020_final.pdf)
 
