@@ -18,6 +18,8 @@ title: talks
 
 ### 2021
 
+* **Memorial University** _Department of Mathematics and Statistics (Invited)_ [Sparse Additive Interaction Learning](/assets/pdf/bhatnagar_memorial_sail_2021.pdf)
+
 * **UNC Greensboro** _Department of Mathematics and Statistics (Invited)_ [Sparse Additive Interaction Learning](/assets/pdf/bhatnagar_UNC_2021.pdf)
 
 * **Memorial University** _Department of Mathematics and Statistics (Invited)_ [Advances in mixed effects models for prediction and variable selection in high-dimensional data](/assets/pdf/Bhatnagar_Memorial_2021_final.pdf)
