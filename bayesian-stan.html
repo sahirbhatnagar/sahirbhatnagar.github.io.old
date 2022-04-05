@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Sahir Bhatnagar | Bayesian Non-Linear Multilevel Models</title>
+  <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+
+  <!-- Include custom icon fonts -->
+  <link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/academicons.min.css">
+
+
+  <link rel="shortcut icon" href="https://sahirbhatnagar.com/assets/img/favicon.ico">
+  <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css"> 
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="https://sahirbhatnagar.com/bayesian-stan">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Sahir</strong> Bhatnagar
+    </span>
+    
+
+    <nav class="site-nav">
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="https://sahirbhatnagar.com/">about</a>
+
+        <!-- Pages 
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/misc/">miscellaneous</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/papers/">papers</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/projects/">projects</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/code/">code</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/talks/">talks</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/teaching/">teaching</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/team/">team</a>
+          
+        
+          
+        
+          
+         -->
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/papers/">papers</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/code/">code</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/team/">team</a>
+          
+        
+          
+        
+          
+        
+
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/teaching/">teaching</a>
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/talks/">talks</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <!-- Blog
+        <a class="page-link" href="http://sahirbhatnagar.github.io/blog">blog</a>-->
+
+        <!-- Blog--> 
+        <a class="page-link" href="https://sahirbhatnagar.com/blog/">blog</a> 
+
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/misc/">misc</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+
+
+        <!-- CV link -->
+        <a class="page-link" href="https://sahirbhatnagar.com/assets/pdf/Bhatnagar_Research_Teaching.pdf">CV</a>
+ 
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Bayesian Non-Linear Multilevel Models</h1>
+    <p class="post-meta">February 23, 2017 • Sahir</p>
+  </header>
+
+  <article class="post-content">
+    <p>Consider the following repeated measures model:</p>
+
+\[y_{ij} =\beta_0 + \beta_1 a_{ij}  + \beta_1^2 b_{ij} + \mu_i + \varepsilon_{ij}\]
+
+<p>for \(i = 1, \ldots, n\), \(j = 1, 2\) where \(n\) is the sample size, \(j\) represents the index of the repeated measure, i.e., each subject has two measurements, \(\mu_i\) is a normally distributed random effect, \(\varepsilon_{ij}\) is a normally distributed error term, \(y_{ij}\) is the continuous response, and \(a_{ij}, b_{ij}\) are covariates. This is a multilevel model because of the nested structure of the data, and also non-linear in the \(\beta_1\) parameter. In this post I simulate some data under this model, and try to leverage Bayesian computation techniques to estimate the parameters using the <a href="https://github.com/paul-buerkner/brms">brms</a> which is an interface to fit Bayesian generalized (non-)linear multilevel models using <a href="http://mc-stan.org/">Stan</a>.</p>
+
+<p><img src="http://i.imgur.com/r0IXN1w.jpg" alt="" /></p>
+
+<!--more-->
+
+<h2 id="load-packages">Load Packages</h2>
+
+<p>We first load the required packages:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">requireNamespace</span><span class="p">(</span><span class="s2">"pacman"</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> 
+  </span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"pacman"</span><span class="p">)</span><span class="w">
+</span><span class="n">pacman</span><span class="o">::</span><span class="n">p_load</span><span class="p">(</span><span class="s1">'brms'</span><span class="p">)</span></code></pre></figure>
+
+<h2 id="simulate-data-n--500-two-timepoints">Simulate Data (n = 500, two timepoints)</h2>
+
+<p>Next I simulate some multilevel data:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="n">ls</span><span class="p">())</span><span class="w">
+
+</span><span class="c1"># number of subjects</span><span class="w">
+</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">500</span><span class="w">
+
+</span><span class="c1"># number of time points</span><span class="w">
+</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w">
+
+</span><span class="c1"># SNR</span><span class="w">
+</span><span class="n">SNR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w">
+
+</span><span class="c1"># true coefficient value</span><span class="w">
+</span><span class="n">b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">3</span><span class="w">
+
+</span><span class="c1"># simulate independent covariates</span><span class="w">
+</span><span class="n">A</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rgamma</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="n">B</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># random effect: same for time 1 and time 2</span><span class="w">
+</span><span class="n">random_eff</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rpois</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
+
+</span><span class="n">y.star</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="n">random_eff</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">error</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="w">
+</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="n">stats</span><span class="o">::</span><span class="n">var</span><span class="p">(</span><span class="n">y.star</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">SNR</span><span class="o">*</span><span class="n">stats</span><span class="o">::</span><span class="n">var</span><span class="p">(</span><span class="n">error</span><span class="p">)))</span><span class="w">
+
+</span><span class="c1"># response</span><span class="w">
+</span><span class="n">yij</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">y.star</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="o">*</span><span class="n">error</span><span class="w"> 
+
+</span><span class="n">dat1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">yij</span><span class="p">,</span><span class="w"> 
+                   </span><span class="n">aij</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> 
+                   </span><span class="n">bij</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> 
+                   </span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">))</span></code></pre></figure>
+
+<h2 id="fit-non-linear-multilevel-bayesian-model">Fit Non-linear Multilevel Bayesian Model</h2>
+
+<p>We first need to specify priors for \(\beta_1\) and the random effect \(\mu_i\). I have found the easiest way to do this, is to first get information for which priors may be specified using the <code class="language-plaintext highlighter-rouge">brms::get_prior</code> function:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">(</span><span class="n">prior</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">brms</span><span class="o">::</span><span class="n">get_prior</span><span class="p">(</span><span class="w">
+  </span><span class="n">brms</span><span class="o">::</span><span class="n">bf</span><span class="p">(</span><span class="n">yij</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">aij</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">beta</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">bij</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mui</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">mui</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">ID</span><span class="p">),</span><span class="w">
+           </span><span class="n">beta</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">nl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w">
+  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat1</span><span class="p">,</span><span class="w"> 
+  </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gaussian</span><span class="p">()))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##                 prior class      coef group nlpar bound
+## 1 student_t(3, 0, 13) sigma                            
+## 2                         b                  beta      
+## 3                         b Intercept        beta      
+## 4                         b                   mui      
+## 5                         b Intercept         mui      
+## 6 student_t(3, 0, 13)    sd                   mui      
+## 7                        sd              ID   mui      
+## 8                        sd Intercept    ID   mui</code></pre></figure>
+
+<p>The <code class="language-plaintext highlighter-rouge">nl = TRUE</code> argument indicates that this should be treated as a non-linear model. We need to specify priors for the population level effects as well as the standard deviation of the random effect (what is referred to as group-level effects in the output):</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">prior</span><span class="o">$</span><span class="n">prior</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">)]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"normal(0,10)"</span><span class="w">
+</span><span class="n">prior</span><span class="o">$</span><span class="n">prior</span><span class="p">[</span><span class="m">8</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"student_t(3, 0, 11)"</span><span class="w">
+</span><span class="n">prior</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##                 prior class      coef group nlpar bound
+## 1 student_t(3, 0, 13) sigma                            
+## 2        normal(0,10)     b                  beta      
+## 3                         b Intercept        beta      
+## 4        normal(0,10)     b                   mui      
+## 5                         b Intercept         mui      
+## 6 student_t(3, 0, 13)    sd                   mui      
+## 7                        sd              ID   mui      
+## 8 student_t(3, 0, 11)    sd Intercept    ID   mui</code></pre></figure>
+
+<p>We can check the corresponding STAN code to verify that the prior information has been updated accordingly using the <code class="language-plaintext highlighter-rouge">brms::make_stancode</code> function:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">brms</span><span class="o">::</span><span class="n">make_stancode</span><span class="p">(</span><span class="w">
+  </span><span class="n">bf</span><span class="p">(</span><span class="n">yij</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">aij</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">beta</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">bij</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mui</span><span class="p">,</span><span class="w"> 
+     </span><span class="n">mui</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">ID</span><span class="p">),</span><span class="w">
+     </span><span class="n">beta</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> 
+     </span><span class="n">nl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w">
+  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat1</span><span class="p">,</span><span class="w"> 
+  </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gaussian</span><span class="p">(),</span><span class="w">
+  </span><span class="n">prior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prior</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## // generated with brms 1.5.0
+## functions { 
+## } 
+## data { 
+##   int&lt;lower=1&gt; N;  // total number of observations 
+##   vector[N] Y;  // response variable 
+##   int&lt;lower=1&gt; K_mui;  // number of population-level effects 
+##   matrix[N, K_mui] X_mui;  // population-level design matrix 
+##   int&lt;lower=1&gt; K_beta;  // number of population-level effects 
+##   matrix[N, K_beta] X_beta;  // population-level design matrix 
+##   int&lt;lower=1&gt; KC;  // number of covariates 
+##  matrix[N, KC] C;  // covariate matrix 
+##   // data for group-level effects of ID 1 
+##   int&lt;lower=1&gt; J_1[N]; 
+##   int&lt;lower=1&gt; N_1; 
+##   int&lt;lower=1&gt; M_1; 
+##   vector[N] Z_1_mui_1; 
+##   int prior_only;  // should the likelihood be ignored? 
+## } 
+## transformed data { 
+## } 
+## parameters { 
+##   vector[K_mui] b_mui;  // population-level effects 
+##   vector[K_beta] b_beta;  // population-level effects 
+##   real&lt;lower=0&gt; sigma;  // residual SD 
+##   vector&lt;lower=0&gt;[M_1] sd_1;  // group-level standard deviations 
+##   vector[N_1] z_1[M_1];  // unscaled group-level effects 
+## } 
+## transformed parameters { 
+##   // group-level effects 
+##   vector[N_1] r_1_mui_1; 
+##   r_1_mui_1 = sd_1[1] * (z_1[1]); 
+## } 
+## model { 
+##   vector[N] mu_mui; 
+##   vector[N] mu_beta; 
+##   vector[N] mu; 
+##   mu_mui = X_mui * b_mui; 
+##   mu_beta = X_beta * b_beta; 
+##   for (n in 1:N) { 
+##     mu_mui[n] = mu_mui[n] + (r_1_mui_1[J_1[n]]) * Z_1_mui_1[n]; 
+##     // compute non-linear predictor 
+##     mu[n] = mu_beta[n] * C[n, 1] + (mu_beta[n] ^ 2) * C[n, 2] + mu_mui[n]; 
+##   } 
+##   // prior specifications 
+##   b_mui ~ normal(0,10); 
+##   b_beta ~ normal(0,10); 
+##   sigma ~ student_t(3, 0, 13); 
+##   sd_1 ~ student_t(3, 0, 11); 
+##   z_1[1] ~ normal(0, 1); 
+##   // likelihood contribution 
+##   if (!prior_only) { 
+##     Y ~ normal(mu, sigma); 
+##   } 
+## } 
+## generated quantities { 
+## }</code></pre></figure>
+
+<p>Next we fit the model with 6 Markov chains:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># refresh = 0 to surpress output</span><span class="w">
+</span><span class="n">fit1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">brms</span><span class="o">::</span><span class="n">brm</span><span class="p">(</span><span class="w">
+  </span><span class="n">bf</span><span class="p">(</span><span class="n">yij</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">aij</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">beta</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">bij</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mui</span><span class="p">,</span><span class="w"> 
+     </span><span class="n">mui</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">ID</span><span class="p">),</span><span class="w">
+     </span><span class="n">beta</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> 
+     </span><span class="n">nl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w">
+  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat1</span><span class="p">,</span><span class="w"> 
+  </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gaussian</span><span class="p">(),</span><span class="w">
+  </span><span class="n">prior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prior</span><span class="p">,</span><span class="w">
+  </span><span class="n">control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">adapt_delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">),</span><span class="w">
+  </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10000</span><span class="p">,</span><span class="w"> 
+  </span><span class="n">thin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> 
+  </span><span class="n">chains</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> 
+  </span><span class="n">cores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> 
+  </span><span class="n">refresh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Compiling the C++ model</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Start sampling</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Warning: There were 14 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See
+## http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Warning: Examine the pairs() plot to diagnose sampling problems</code></pre></figure>
+
+<p>We can check the summary to see if the model was able to accurately estimate \(\beta_1\):</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">summary</span><span class="p">(</span><span class="n">fit1</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  Family: gaussian (identity) 
+## Formula: yij ~ beta * aij + (beta^2) * bij + mui 
+##          mui ~ 1 + (1 | ID)
+##          beta ~ 1
+##    Data: dat1 (Number of observations: 1000) 
+## Samples: 6 chains, each with iter = 10000; warmup = 5000; thin = 2; 
+##          total post-warmup samples = 15000
+##    WAIC: Not computed
+##  
+## Group-Level Effects: 
+## ~ID (Number of levels: 500) 
+##                   Estimate Est.Error l-95% CI u-95% CI Eff.Sample
+## sd(mui_Intercept)     2.13      0.79     0.28     3.42       2384
+##                   Rhat
+## sd(mui_Intercept)    1
+## 
+## Population-Level Effects: 
+##                Estimate Est.Error l-95% CI u-95% CI Eff.Sample Rhat
+## mui_Intercept     10.28      0.30     9.69    10.87      13058    1
+## beta_Intercept     2.97      0.04     2.89     3.06      12924    1
+## 
+## Family Specific Parameters: 
+##       Estimate Est.Error l-95% CI u-95% CI Eff.Sample Rhat
+## sigma     8.05      0.25     7.56     8.55       4058    1
+## 
+## Samples were drawn using sampling(NUTS). For each parameter, Eff.Sample 
+## is a crude measure of effective sample size, and Rhat is the potential 
+## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre></figure>
+
+<p>The estimate of interest in the output above is <code class="language-plaintext highlighter-rouge">beta_Intercept</code> under <code class="language-plaintext highlighter-rouge">Population-Level Effects</code>. This corresponds to the estimate of \(\beta_1\) in the equation above. We see that the estimate is close to the true value of 3. We also see that the estimate of the standard deviation of the random effect is 2.13 [95% CI: 0.28, 3.42], indicating a strong subject specific effect (which is what we would expect since we generated the data this way).</p>
+
+<p>We can also plot some model diagnostics to ensure proper mixing of the Markov chains:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plot</span><span class="p">(</span><span class="n">fit1</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/figure/posts/2017-02-23-non_linear_bayesian/unnamed-chunk-9-1.png" alt="plot of chunk unnamed-chunk-9" /></p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plot</span><span class="p">(</span><span class="n">marginal_effects</span><span class="p">(</span><span class="n">fit1</span><span class="p">),</span><span class="w"> </span><span class="n">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">ask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/figure/posts/2017-02-23-non_linear_bayesian/unnamed-chunk-9-2.png" alt="plot of chunk unnamed-chunk-9" /><img src="/figure/posts/2017-02-23-non_linear_bayesian/unnamed-chunk-9-3.png" alt="plot of chunk unnamed-chunk-9" /><img src="/figure/posts/2017-02-23-non_linear_bayesian/unnamed-chunk-9-4.png" alt="plot of chunk unnamed-chunk-9" /></p>
+
+<h2 id="session-info">Session Info</h2>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## R version 3.4.0 (2017-04-21)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Running under: Ubuntu 16.04.2 LTS
+## 
+## Matrix products: default
+## BLAS: /usr/lib/openblas-base/libblas.so.3
+## LAPACK: /usr/lib/libopenblasp-r0.2.18.so
+## 
+## attached base packages:
+## [1] methods   stats     graphics  grDevices utils     datasets 
+## [7] base     
+## 
+## other attached packages:
+## [1] brms_1.5.0    ggplot2_2.2.1 Rcpp_0.12.11 
+## 
+## loaded via a namespace (and not attached):
+##  [1] highr_0.6            compiler_3.4.0       plyr_1.8.4          
+##  [4] tools_3.4.0          digest_0.6.12        bayesplot_1.1.0     
+##  [7] evd_2.3-2            statmod_1.4.27       evaluate_0.10       
+## [10] tibble_1.3.0         gtable_0.2.0         nlme_3.1-131        
+## [13] lattice_0.20-35      DBI_0.5-1            parallel_3.4.0      
+## [16] loo_1.0.0            gridExtra_2.2.1      coda_0.19-1         
+## [19] stringr_1.2.0        dplyr_0.5.0          knitr_1.16          
+## [22] stats4_3.4.0         grid_3.4.0           inline_0.3.14       
+## [25] R6_2.2.0             rstan_2.14.1         pacman_0.4.1        
+## [28] reshape2_1.4.2       magrittr_1.5         scales_0.4.1        
+## [31] codetools_0.2-15     StanHeaders_2.14.0-1 matrixStats_0.51.0  
+## [34] rstantools_1.1.0     abind_1.4-5          assertthat_0.1      
+## [37] colorspace_1.3-2     labeling_0.3         stringi_1.1.5       
+## [40] lazyeval_0.2.0       munsell_0.4.3</code></pre></figure>
+
+
+  </article>
+
+  
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname  = 'al-folio';
+      var disqus_identifier = '/non_linear_bayesian';
+      var disqus_title      = "Bayesian Non-Linear Multilevel Models";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2022 Sahir Bhatnagar.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>, <a href="https://github.com/alshedivat/al-folio">al-folio</a>, <a href="http://daringfireball.net/projects/markdown/">markdown</a>, <a href="https://cran.r-project.org/">R</a>, <a href="http://yihui.name/knitr/">knitr</a>, <a href="http://johnmacfarlane.net/pandoc/">pandoc</a>, <a href="https://github.com/mozilla/Fira">Fira</a> and <a href="https://github.com/sahirbhatnagar/sahirbhatnagar.github.io">GitHub</a>
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="https://sahirbhatnagar.com/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+<script src="https://sahirbhatnagar.com/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/academicons.min.css">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60189402-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Sahir Bhatnagar | Heatmaps in R</title>
+  <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+
+  <!-- Include custom icon fonts -->
+  <link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/academicons.min.css">
+
+
+  <link rel="shortcut icon" href="https://sahirbhatnagar.com/assets/img/favicon.ico">
+  <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css"> 
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="https://sahirbhatnagar.com/heatmap">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Sahir</strong> Bhatnagar
+    </span>
+    
+
+    <nav class="site-nav">
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="https://sahirbhatnagar.com/">about</a>
+
+        <!-- Pages 
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/misc/">miscellaneous</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/papers/">papers</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/projects/">projects</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/code/">code</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/talks/">talks</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/teaching/">teaching</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/team/">team</a>
+          
+        
+          
+        
+          
+         -->
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/papers/">papers</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/code/">code</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/team/">team</a>
+          
+        
+          
+        
+          
+        
+
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/teaching/">teaching</a>
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/talks/">talks</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <!-- Blog
+        <a class="page-link" href="http://sahirbhatnagar.github.io/blog">blog</a>-->
+
+        <!-- Blog--> 
+        <a class="page-link" href="https://sahirbhatnagar.com/blog/">blog</a> 
+
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/misc/">misc</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+
+
+        <!-- CV link -->
+        <a class="page-link" href="https://sahirbhatnagar.com/assets/pdf/Bhatnagar_Research_Teaching.pdf">CV</a>
+ 
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Heatmaps in R</h1>
+    <p class="post-meta">June 10, 2015 • sahir</p>
+  </header>
+
+  <article class="post-content">
+    <p>In every statistical analysis, the first thing one should do is try and visualise the data before any modeling. In microarray studies, a common visualisation is a heatmap of gene expression data. In this post I simulate some gene expression data and visualise it using the <code class="language-plaintext highlighter-rouge">pheatmap</code> function from the <a href="http://cran.r-project.org/web/packages/pheatmap/">pheatmap</a> package in <code class="language-plaintext highlighter-rouge">R</code>. You will also need the <code class="language-plaintext highlighter-rouge">mvrnorm</code> function from the <a href="http://cran.r-project.org/web/packages/MASS/index.html">MASS</a> library to simulate from a multivariate normal distribution, and the <code class="language-plaintext highlighter-rouge">brewer.pal</code> function from the <a href="http://cran.r-project.org/web/packages/RColorBrewer/index.html">RColorBrewer</a> library for easier customization of colors.</p>
+
+<!--more-->
+
+<h2 id="components-of-a-heatmap">Components of a Heatmap</h2>
+
+<p>There are four main components that should be considered when drawing a heatmap:</p>
+
+<ol>
+  <li><a href="#data">Formatting the data</a></li>
+  <li><a href="#color">Choosing the color scheme</a></li>
+  <li><a href="#annotate">Annotating the rows and/or columns</a></li>
+  <li><a href="#color">Clustering</a></li>
+</ol>
+
+<hr />
+
+<h3 id="formatting-the-data">Formatting the data<a name="data"></a></h3>
+
+<p>First I simulate some gene expression data, based on a function that I created, for genes which are correlated conditional on an exposure status (the function definition is given <a href="#function">at the end of this post</a>):</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">n0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50</span><span class="p">;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w">
+</span><span class="n">genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sim.expr.data</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">n0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">rho.0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.01</span><span class="p">,</span><span class="w"> </span><span class="n">rho.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.95</span><span class="p">)</span></code></pre></figure>
+
+<p>In order to properly label the heatmap, we must label the matrix of gene expressions:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">colnames</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Gene"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">p</span><span class="p">)</span><span class="w">
+</span><span class="n">rownames</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Subject"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span><span class="w">
+</span><span class="n">genes</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##               Gene1      Gene2      Gene3      Gene4      Gene5
+## Subject1 -0.3330860  0.2515602 -0.7263684 -0.1257963  1.3159837
+## Subject2 -0.4128702 -0.9761655  0.2132626  0.7267015 -0.3634427
+## Subject3  0.9432688  0.2973164 -1.1210232  0.9017424 -0.8098157
+## Subject4  0.2894936 -0.6708301 -0.8209677  0.2204200 -1.0602915
+## Subject5 -1.2131869 -1.2346285 -0.1120417  0.9439494  0.5893691</code></pre></figure>
+
+<hr />
+
+<h3 id="choosing-the-color-scheme">Choosing the color scheme<a name="color"></a></h3>
+
+<p>To avoid wasting time choosing colors, I recommend using the <a href="http://cran.r-project.org/web/packages/RColorBrewer/index.html">RColorBrewer</a> package based on the design of geographer <a href="http://colorbrewer2.org/">Cynthia Brewer</a>. From the <a href="http://cran.r-project.org/web/packages/RColorBrewer/index.html">RColorBrewer</a> help page:</p>
+
+<p>There are 3 types of palettes, sequential, diverging, and qualitative:</p>
+
+<ol>
+  <li>Sequential palettes are suited to ordered data that progress from low to high. Lightness steps dominate the look of these schemes, with light colors for low data values to dark colors for high data values.</li>
+  <li>Diverging palettes put equal emphasis on mid-range critical values and extremes at both ends of the data range. The critical class or break in the middle of the legend is emphasized with light colors and low and high extremes are emphasized with dark colors that have contrasting hues.</li>
+  <li>Qualitative palettes do not imply magnitude differences between legend classes, and hues are used to create the primary visual differences between classes. Qualitative schemes are best suited
+to representing nominal or categorical data</li>
+</ol>
+
+<p>To see the palettes available for coloring the heatmap:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">pacman</span><span class="o">::</span><span class="n">p_load</span><span class="p">(</span><span class="n">RColorBrewer</span><span class="p">)</span><span class="w">
+</span><span class="n">RColorBrewer</span><span class="o">::</span><span class="n">display.brewer.all</span><span class="p">()</span></code></pre></figure>
+
+<p><img src="/figure/posts/2015-06-10-heatmaps/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" /></p>
+
+<p>You need to provide the <code class="language-plaintext highlighter-rouge">RColorBrewer::brewer.pal</code> function with two arguments; the number of values (All the diverging palettes are available in variations from 3 different values up to 11 different values), and the name of the palette as shown in the figure above. We will use the <em>Reds</em> palette which has a maximum number of 9 colors:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">(</span><span class="n">col.pal</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">RColorBrewer</span><span class="o">::</span><span class="n">brewer.pal</span><span class="p">(</span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="s2">"Reds"</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "#FFF5F0" "#FEE0D2" "#FCBBA1" "#FC9272" "#FB6A4A" "#EF3B2C"
+## [7] "#CB181D" "#A50F15" "#67000D"</code></pre></figure>
+
+<hr />
+
+<h3 id="annotating-the-rows-andor-columns">Annotating the rows and/or columns<a name="annotate"></a></h3>
+
+<p>If the subjects can be contrasted, it is useful to display this information on the heatmap e.g. case/control status or exposed vs. unexposed. To do so, we first need to create a separate data frame which contains that information. This data frame can contain many columns or just one column. (Note that the rownames of this data frame need to correspond to the rownames i.e. Subjects IDs of the gene expression data created above). In this example we create a data frame which has exposure status and tumor type for each subject:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">annotation_col</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="w">
+        </span><span class="n">Exposure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="s2">"X=0"</span><span class="p">,</span><span class="n">n0</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="s2">"X=1"</span><span class="p">,</span><span class="w"> </span><span class="n">n1</span><span class="p">)))),</span><span class="w">
+        </span><span class="n">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"T-cell"</span><span class="p">,</span><span class="s2">"B-cell"</span><span class="p">),</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="nb">T</span><span class="p">)))</span><span class="w">
+
+</span><span class="n">rownames</span><span class="p">(</span><span class="n">annotation_col</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Subject"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span><span class="w">
+
+</span><span class="n">head</span><span class="p">(</span><span class="n">annotation_col</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##          Exposure   Type
+## Subject1      X=0 B-cell
+## Subject2      X=0 T-cell
+## Subject3      X=0 T-cell
+## Subject4      X=0 B-cell
+## Subject5      X=0 B-cell
+## Subject6      X=0 T-cell</code></pre></figure>
+
+<p>We also want to annotate information on the genes, such as pathway membership. To do so, we create another data frame which has the gene annotations. Note once again that the rownames of this data frame need to correspond to the columnames i.e. Gene IDs of the gene expression data created above.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">annotation_row</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="w">
+                  </span><span class="n">Pathway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="n">each</span><span class="o">=</span><span class="m">25</span><span class="p">)))</span><span class="w">
+
+</span><span class="n">rownames</span><span class="p">(</span><span class="n">annotation_row</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Gene"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span><span class="w">
+
+</span><span class="n">head</span><span class="p">(</span><span class="n">annotation_row</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##       Pathway
+## Gene1       1
+## Gene2       1
+## Gene3       1
+## Gene4       1
+## Gene5       1
+## Gene6       1</code></pre></figure>
+
+<hr />
+
+<h3 id="clustering">Clustering<a name="cluster"></a></h3>
+
+<p>You need to decide if its important to cluster the rows and/or columns of your heatmap. If you decide to cluster, you must then choose the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/dist.html">distance metric</a> to use and the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/hclust.html">clustering method</a>. 
+The pheatmap comes with lots of customizations (see the <a href="http://cran.r-project.org/web/packages/pheatmap/pheatmap.pdf">help page</a> for a complete list of options). In this example I only want to cluster the genes (i.e. the rows), and place a gap between subject who were exposed and unexposed. Note that we must pass the transpose of the matrix for the <code class="language-plaintext highlighter-rouge">pheatmap</code> function, which is not the case for other functions such as <code class="language-plaintext highlighter-rouge">gplots::heatmap.2</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">pacman</span><span class="o">::</span><span class="n">p_load</span><span class="p">(</span><span class="n">pheatmap</span><span class="p">)</span><span class="w">
+</span><span class="n">pheatmap</span><span class="o">::</span><span class="n">pheatmap</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">genes</span><span class="p">),</span><span class="w"> 
+                   </span><span class="n">cluster_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">,</span><span class="w">
+                   </span><span class="n">cluster_cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">,</span><span class="w">
+                   </span><span class="n">annotation_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">annotation_col</span><span class="p">,</span><span class="w">
+                   </span><span class="n">annotation_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">annotation_row</span><span class="p">,</span><span class="w">
+                   </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col.pal</span><span class="p">,</span><span class="w"> 
+                   </span><span class="n">fontsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6.5</span><span class="p">,</span><span class="w">
+                   </span><span class="n">fontsize_row</span><span class="o">=</span><span class="m">6</span><span class="p">,</span><span class="w"> 
+                   </span><span class="n">fontsize_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w">
+                   </span><span class="n">gaps_col</span><span class="o">=</span><span class="m">50</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/figure/posts/2015-06-10-heatmaps/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
+
+<hr />
+
+<h2 id="update-june-25-2015"><em>Update: June 25, 2015</em></h2>
+
+<h3 id="interactive-heatmaps-using-d3heatmap">Interactive Heatmaps using <a href="https://github.com/rstudio/d3heatmap"><code class="language-plaintext highlighter-rouge">d3heatmap</code></a></h3>
+
+<p>It is also possible to create Interactive heatmaps (in the sense that you can see the actual values by hovering your mouse over the plot) using the <a href="https://github.com/rstudio/d3heatmap"><code class="language-plaintext highlighter-rouge">d3heatmap</code></a> pacakge available on github:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">pacman</span><span class="o">::</span><span class="n">p_install_gh</span><span class="p">(</span><span class="s2">"rstudio/d3heatmap"</span><span class="p">)</span><span class="w">
+</span><span class="n">pacman</span><span class="o">::</span><span class="n">p_load</span><span class="p">(</span><span class="n">webshot</span><span class="p">)</span></code></pre></figure>
+
+<p>This is useful if you are producible markdown reports. The syntax is standard, though does not allow for multiple annotations as in <code class="language-plaintext highlighter-rouge">pheatmap</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">d3heatmap</span><span class="p">)</span><span class="w">
+</span><span class="n">d3heatmap</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">genes</span><span class="p">),</span><span class="w"> </span><span class="n">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Reds"</span><span class="p">,</span><span class="w"> </span><span class="n">Colv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/figure/posts/2015-06-10-heatmaps/unnamed-chunk-10-1.png" alt="plot of chunk unnamed-chunk-10" /></p>
+
+<p>For some reason, this map is not showing up on this website, but it should work when compiling Rmarkdown scripts and viewing the resulting HTML document in your browser or within RStudio.</p>
+
+<h2 id="update-august-7-2015"><em>Update: August 7, 2015</em></h2>
+
+<h3 id="interactive-heatmaps-using-plotly">Interactive Heatmaps using <a href="https://plot.ly/r/heatmaps/"><code class="language-plaintext highlighter-rouge">plotly</code></a></h3>
+
+<p>After some user setup (see the plotly <a href="https://plot.ly/r/getting-started/">help page</a>), the following code creates an interactive heatmap:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">expression</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span><span class="w">
+</span><span class="n">plotly</span><span class="o">::</span><span class="n">plot_ly</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expression</span><span class="p">,</span><span class="w"> </span><span class="n">colorscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col.pal</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"heatmap"</span><span class="p">)</span></code></pre></figure>
+
+<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~sahirbhatnagar/36.embed"></iframe>
+
+<hr />
+
+<h3 id="simulate-gene-expression-data-function">Simulate Gene Expression Data function<a name="function"></a></h3>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sim.expr.data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n0</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">rho.0</span><span class="p">,</span><span class="w"> </span><span class="n">rho.1</span><span class="p">){</span><span class="w">
+</span><span class="c1"># Initiate Simulation parameters</span><span class="w">
+</span><span class="c1"># n: total number of subjects</span><span class="w">
+</span><span class="c1"># n0: number of subjects with X=0</span><span class="w">
+</span><span class="c1"># n1: number of subjects with X=1</span><span class="w">
+</span><span class="c1"># p: number of genes</span><span class="w">
+</span><span class="c1"># rho.0: rho between Z_i and Z_j when X=0</span><span class="w">
+</span><span class="c1"># rho.1: rho between Z_i and Z_j when X=1</span><span class="w">
+
+</span><span class="c1"># Simulate gene expression values according to exposure X=0, X=1, according to a centered multivariate normal distribution with covariance between Z_i and Z_j being rho^|i-j|</span><span class="w">
+  </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">p</span><span class="w"> </span><span class="c1"># used for creating covariance matrix</span><span class="w">
+  </span><span class="n">H</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">outer</span><span class="p">(</span><span class="n">times</span><span class="p">,</span><span class="w"> </span><span class="n">times</span><span class="p">,</span><span class="w"> </span><span class="s2">"-"</span><span class="p">))</span><span class="w">
+  </span><span class="n">V0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rho.0</span><span class="o">^</span><span class="n">H</span><span class="w">
+  </span><span class="n">V1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rho.1</span><span class="o">^</span><span class="n">H</span><span class="w">
+
+  </span><span class="c1"># rows are people, columns are genes</span><span class="w">
+  </span><span class="n">genes0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">MASS</span><span class="o">::</span><span class="n">mvrnorm</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n0</span><span class="p">,</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">p</span><span class="p">),</span><span class="w"> </span><span class="n">Sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V0</span><span class="p">)</span><span class="w">
+  </span><span class="n">genes1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">MASS</span><span class="o">::</span><span class="n">mvrnorm</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n1</span><span class="p">,</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">p</span><span class="p">),</span><span class="w"> </span><span class="n">Sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">)</span><span class="w">
+  </span><span class="n">genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rbind</span><span class="p">(</span><span class="n">genes0</span><span class="p">,</span><span class="n">genes1</span><span class="p">)</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+
+  </article>
+
+  
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname  = 'al-folio';
+      var disqus_identifier = '/heatmaps';
+      var disqus_title      = "Heatmaps in R";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2022 Sahir Bhatnagar.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>, <a href="https://github.com/alshedivat/al-folio">al-folio</a>, <a href="http://daringfireball.net/projects/markdown/">markdown</a>, <a href="https://cran.r-project.org/">R</a>, <a href="http://yihui.name/knitr/">knitr</a>, <a href="http://johnmacfarlane.net/pandoc/">pandoc</a>, <a href="https://github.com/mozilla/Fira">Fira</a> and <a href="https://github.com/sahirbhatnagar/sahirbhatnagar.github.io">GitHub</a>
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="https://sahirbhatnagar.com/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+<script src="https://sahirbhatnagar.com/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/academicons.min.css">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60189402-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+
+</html>

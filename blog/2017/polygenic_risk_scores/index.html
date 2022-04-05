@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Sahir Bhatnagar | Polygenic Risks Scores with data.table in R</title>
+  <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+
+  <!-- Include custom icon fonts -->
+  <link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/academicons.min.css">
+
+
+  <link rel="shortcut icon" href="https://sahirbhatnagar.com/assets/img/favicon.ico">
+  <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css"> 
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="https://sahirbhatnagar.com/blog/2017/polygenic_risk_scores/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Sahir</strong> Bhatnagar
+    </span>
+    
+
+    <nav class="site-nav">
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="https://sahirbhatnagar.com/">about</a>
+
+        <!-- Pages 
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/misc/">miscellaneous</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/papers/">papers</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/projects/">projects</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/code/">code</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/talks/">talks</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/teaching/">teaching</a>
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/team/">team</a>
+          
+        
+          
+        
+          
+         -->
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/papers/">papers</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/code/">code</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/team/">team</a>
+          
+        
+          
+        
+          
+        
+
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/teaching/">teaching</a>
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/talks/">talks</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <!-- Blog
+        <a class="page-link" href="http://sahirbhatnagar.github.io/blog">blog</a>-->
+
+        <!-- Blog--> 
+        <a class="page-link" href="https://sahirbhatnagar.com/blog/">blog</a> 
+
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="https://sahirbhatnagar.com/misc/">misc</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+
+
+        <!-- CV link -->
+        <a class="page-link" href="https://sahirbhatnagar.com/assets/pdf/Bhatnagar_Research_Teaching.pdf">CV</a>
+ 
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Polygenic Risks Scores with data.table in R</h1>
+    <p class="post-meta">August 11, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p>In this short post, I show how to calculate <a href="https://en.wikipedia.org/wiki/Polygenic_score">polygenic risk scores</a> (PRS) using the <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html"><code class="language-plaintext highlighter-rouge">data.table</code></a> package in <code class="language-plaintext highlighter-rouge">R</code>. I will show an example on a small dataset, but can be easily extended to much larger datasets. The PRS based on \(p\) SNPs is given by:</p>
+
+\[PRS_i = \sum_{j=1}^{p}\beta_j \times SNP_{ij}\]
+
+<p>where \(\beta_j\) is the beta coefficient for the \(j^{th}\) SNP, and \(SNP_{ij}\) is the value of \(j^{th}\) SNP for the \(i^{th}\) individual.</p>
+
+<!--more-->
+
+<p>First we load the <a href="https://github.com/Rdatatable/data.table/wiki"><code class="language-plaintext highlighter-rouge">data.table</code></a> package:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">pacman</span><span class="o">::</span><span class="n">p_load</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span></code></pre></figure>
+
+<p>Next we create some sample data, where the rows are SNPs and the columns are individuals. This <code class="language-plaintext highlighter-rouge">data.table</code> also contains a column with the beta coefficients for each SNP.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># sample data, rows are SNPs, columns are individuals</span><span class="w">
+</span><span class="n">DT</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="p">(</span><span class="n">ID1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">),</span><span class="w">
+                 </span><span class="n">ID2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">),</span><span class="w">
+                 </span><span class="n">ID3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">),</span><span class="w">
+                 </span><span class="n">beta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">10</span><span class="p">))</span><span class="w">
+</span><span class="n">DT</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##     ID1 ID2 ID3        beta
+##  1:   2   0   1  2.35674416
+##  2:   2   0   1  0.22178574
+##  3:   2   0   2 -0.15026475
+##  4:   0   1   0 -0.97745574
+##  5:   0   0   1 -0.39511441
+##  6:   0   0   1  1.10683879
+##  7:   2   2   2  0.42516701
+##  8:   2   2   2 -0.93244438
+##  9:   0   0   1  0.09155816
+## 10:   0   2   1 -1.42107331</code></pre></figure>
+
+<p>In situations where there are many individuals, this can be a tedious calculation because standard methods would require to type out the name of all of the columns to be multiplied by. Instead, using the <a href="https://stackoverflow.com/questions/14937165/using-dynamic-column-names-in-data-table?lq=1"><code class="language-plaintext highlighter-rouge">.SDcols</code></a> argument, greatly simplifies this process by allowing columns to be called on dynamically.</p>
+
+<p>We first create a character vector of the column names that we want to multiply beta by as well as the new column names that we want to store the results in:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># the names of the columns to be multiplied by beta</span><span class="w">
+</span><span class="n">id_names</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"ID"</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># the names of the new columns that have been multiplied by beta</span><span class="w">
+</span><span class="n">new_id_names</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"new_"</span><span class="p">,</span><span class="n">id_names</span><span class="p">)</span></code></pre></figure>
+
+<p>Now with a simple command we get the desired multiplication:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">DT</span><span class="p">[,</span><span class="w"> </span><span class="p">(</span><span class="n">new_id_names</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">.SD</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">beta</span><span class="p">,</span><span class="w"> </span><span class="n">.SDcols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_names</span><span class="p">]</span><span class="w">
+</span><span class="n">DT</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##     ID1 ID2 ID3        beta    new_ID1    new_ID2     new_ID3
+##  1:   2   0   1  2.35674416  4.7134883  0.0000000  2.35674416
+##  2:   2   0   1  0.22178574  0.4435715  0.0000000  0.22178574
+##  3:   2   0   2 -0.15026475 -0.3005295  0.0000000 -0.30052949
+##  4:   0   1   0 -0.97745574  0.0000000 -0.9774557  0.00000000
+##  5:   0   0   1 -0.39511441  0.0000000  0.0000000 -0.39511441
+##  6:   0   0   1  1.10683879  0.0000000  0.0000000  1.10683879
+##  7:   2   2   2  0.42516701  0.8503340  0.8503340  0.85033403
+##  8:   2   2   2 -0.93244438 -1.8648888 -1.8648888 -1.86488876
+##  9:   0   0   1  0.09155816  0.0000000  0.0000000  0.09155816
+## 10:   0   2   1 -1.42107331  0.0000000 -2.8421466 -1.42107331</code></pre></figure>
+
+<p>The PRS for each individual can be calculated using the <code class="language-plaintext highlighter-rouge">colSums</code> function in base <code class="language-plaintext highlighter-rouge">R</code>:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">DT</span><span class="p">[,</span><span class="w"> </span><span class="n">colSums</span><span class="p">(</span><span class="n">.SD</span><span class="p">),</span><span class="w"> </span><span class="n">.SDcols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_id_names</span><span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##    new_ID1    new_ID2    new_ID3 
+##  3.8419756 -4.8341571  0.6456549</code></pre></figure>
+
+
+  </article>
+
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2022 Sahir Bhatnagar.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>, <a href="https://github.com/alshedivat/al-folio">al-folio</a>, <a href="http://daringfireball.net/projects/markdown/">markdown</a>, <a href="https://cran.r-project.org/">R</a>, <a href="http://yihui.name/knitr/">knitr</a>, <a href="http://johnmacfarlane.net/pandoc/">pandoc</a>, <a href="https://github.com/mozilla/Fira">Fira</a> and <a href="https://github.com/sahirbhatnagar/sahirbhatnagar.github.io">GitHub</a>
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="https://sahirbhatnagar.com/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+<script src="https://sahirbhatnagar.com/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://sahirbhatnagar.com/assets/css/academicons.min.css">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60189402-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+
+</html>
